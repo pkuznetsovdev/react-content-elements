@@ -1,34 +1,47 @@
-import { ContentElementProps, ContentElement } from "./types";
+import { ContentElementProps, ContentElementTemplatesMap } from "./types";
 import { getContentElementTemplateByName } from "./utils";
-import type { FCWithChildren } from "types";
-import { ContentName } from "@content-elements/types";
-import { CONTENT_ELEMENTS_BY_NAME } from "./constants";
+import { ContentElementName } from "models/content-elements/types";
+import React from "react";
 
-function WithContentElementProps<T extends ContentName>(
-    name: T,
-    Element: ContentElement<T>,
-    elementProps: ContentElementsMap<T>,
-) {
-    return (wrappedProps: Parameters<typeof CONTENT_ELEMENTS_BY_NAME[T]>[0]) => {
-        const test = wrappedProps.tag;
-        // const className = getCustomElementClassName(wrappedProps, { elementType });
-        //
-        // const rawContent = getCustomElementRawContent(wrappedProps);
-        //
-        // // any other magic for custom elements should be provided here, f.e. set a default tag by the 'elementType' value
-        // // const tagName = props.tagName || DEFAULT_TAG_NAMES[elementType];
-        //
-        return <Element {...wrappedProps} className="content-element" />;
-    };
+const DEFAULT_CONTENT_ELEMENT_TAG_BY_NAME = {
+    text: 'p',
+    icon: 'svg',
+    button: 'button',
+    link: 'link',
+    image: 'image',
+    divider: 'divider',
+    block: 'block',
+    list: 'list',
 }
 
-const ContentElementRenderer: FCWithChildren<ContentElementProps> = ({ children, name, ...contentElementProps }) => {
+function WithContentElementProps<T extends ContentElementName>(
+    ContentElementTemplate: ContentElementTemplatesMap<T>,
+    name: T,
+    contentElementProps: Omit<ContentElementProps<T>, 'name'>,
+) {
+    const tag = contentElementProps.tag || DEFAULT_CONTENT_ELEMENT_TAG_BY_NAME[name]
+
+    // const className = getCustomElementClassName(wrappedProps, { elementType });
+    //
+    // const rawContent = getCustomElementRawContent(wrappedProps);
+    //
+    // // any other magic for custom elements should be provided here, f.e. set a default tag by the 'elementType' value
+    // // const tagName = props.tagName || DEFAULT_TAG_NAMES[elementType];
+    //
+
+    // TODO: WTF??
+    // @ts-ignore-next-line
+    return <ContentElementTemplate {...contentElementProps} tag={tag} classname="content-element" />;
+}
+
+const ContentElementRenderer = <T extends ContentElementName>({
+    name,
+    ...contentElementProps
+}: React.PropsWithChildren<ContentElementProps<T>>) => {
 
     const ContentElementTemplate = getContentElementTemplateByName(name);
 
-    const ContentElement = WithContentElementProps(name, ContentElementTemplate, contentElementProps)
-
-    return <ContentElement>{children}</ContentElement>;
+    return WithContentElementProps(ContentElementTemplate, name, contentElementProps)
 };
 
 export default ContentElementRenderer;

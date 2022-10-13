@@ -20,10 +20,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
-    "paths": {
-      "@content-elements/*": ["models/content-elements/*"],
-      "@app/*": ["./*"],
-    }
   },
   "include": [
     "src"

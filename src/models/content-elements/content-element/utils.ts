@@ -1,8 +1,9 @@
-import { ContentElementProps } from "./types";
-import { CONTENT_ELEMENTS_BY_NAME } from "./constants";
+import { CONTENT_ELEMENT_TEMPLATES_BY_NAME } from "./constants";
+import { ContentElementName } from "models/content-elements/types";
 
 
-export function getContentElementTemplateByName(name: ContentElementProps['name']) {
-    const contentElement = CONTENT_ELEMENTS_BY_NAME[name]
+export function getContentElementTemplateByName(name: ContentElementName) {
+    const contentElement = CONTENT_ELEMENT_TEMPLATES_BY_NAME[name]
+
     return contentElement;
 }
