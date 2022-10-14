@@ -1,10 +1,12 @@
+// https://brygrill.medium.com/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97
 module.exports = {
     extends: [
         'airbnb-typescript',
         'airbnb/hooks',
         'plugin:@typescript-eslint/recommended',
         'plugin:jest/recommended',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
+        'plugin:import/recommended',
     ],
     plugins: ['react', '@typescript-eslint', 'jest'],
     env: {
@@ -13,7 +15,7 @@ module.exports = {
         jest: true,
     },
     globals: {
-        Atomics: 'readonly',
+        Atomics: 'readonly', // TODO: What is that?
         SharedArrayBuffer: 'readonly',
     },
     parser: '@typescript-eslint/parser',
