@@ -14,10 +14,10 @@ const DEFAULT_CONTENT_ELEMENT_TAG_BY_NAME = {
     list: 'list',
 }
 
-function WithContentElementProps<T extends ContentElementName>(
-    ContentElementTemplate: ContentElementTemplatesMap<T>,
-    name: T,
-    contentElementProps: Omit<ContentElementProps<T>, 'name'>,
+function WithContentElementProps<Name extends ContentElementName>(
+    ContentElementTemplate: ContentElementTemplatesMap<Name>,
+    name: Name,
+    contentElementProps: Omit<ContentElementProps<Name>, 'name'>,
 ) {
     const tag = contentElementProps.tag || DEFAULT_CONTENT_ELEMENT_TAG_BY_NAME[name]
 

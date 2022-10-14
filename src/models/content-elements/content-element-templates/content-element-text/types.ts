@@ -59,13 +59,16 @@ export type ContentElementTextModifier = typeof CONTENT_ELEMENT_TEXT_MODIFIERS._
 
 export const CONTENT_ELEMENT_TEXT = {
     _elementName: 'text',
+    _elementSettings: {
+        DEFAULT_TAG: 'p',
+    },
     types: CONTENT_ELEMENT_TEXT_TYPES.get(),
-    tag: CONTENT_ELEMENT_TEXT_TAGS.get(),
+    tags: CONTENT_ELEMENT_TEXT_TAGS.get(),
     modifiers: CONTENT_ELEMENT_TEXT_MODIFIERS.get(),
 } as const;
 
 export type ContentElementTextProps = {
-    types: typeof CONTENT_ELEMENT_TEXT_TYPES._types[number],
-    tag: typeof CONTENT_ELEMENT_TEXT_TAGS._tags[number],
-    modifiers: typeof CONTENT_ELEMENT_TEXT_MODIFIERS._modifiers[number],
+    types: ContentElementTextType,
+    tag: ContentElementTextTag,
+    modifiers: ContentElementTextModifier,
 }
