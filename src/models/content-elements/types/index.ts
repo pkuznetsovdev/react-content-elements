@@ -1,1 +1,1 @@
-export * from './content-names';
+export * from "./content-element-names";

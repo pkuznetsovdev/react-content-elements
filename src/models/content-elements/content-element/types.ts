@@ -1,34 +1,77 @@
 import { ContentElementTextProps } from "models/content-elements/content-element-templates/content-element-text";
 import {
-    CONTENT_ELEMENT_BLOCK,
-    CONTENT_ELEMENT_BUTTON,
-    CONTENT_ELEMENT_DIVIDER,
-    CONTENT_ELEMENT_ICON,
-    CONTENT_ELEMENT_IMAGE,
-    CONTENT_ELEMENT_LINK, CONTENT_ELEMENT_LIST,
-    CONTENT_ELEMENT_TEMPLATES_BY_NAME
+  CONTENT_ELEMENT_BLOCK,
+  CONTENT_ELEMENT_BUTTON,
+  CONTENT_ELEMENT_DIVIDER,
+  CONTENT_ELEMENT_ICON,
+  CONTENT_ELEMENT_IMAGE,
+  CONTENT_ELEMENT_LINK,
+  CONTENT_ELEMENT_LIST,
+  CONTENT_ELEMENT_TEMPLATES_BY_NAME,
 } from "./constants";
 import { ContentElementName } from "models/content-elements/types";
 
+export type ContentElementIcon = {
+  types: typeof CONTENT_ELEMENT_ICON.types[number];
+  tag: typeof CONTENT_ELEMENT_ICON.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_ICON.modifiers[number];
+};
+export type ContentElementButton = {
+  types: typeof CONTENT_ELEMENT_BUTTON.types[number];
+  tag: typeof CONTENT_ELEMENT_BUTTON.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_BUTTON.modifiers[number];
+};
+export type ContentElementLink = {
+  types: typeof CONTENT_ELEMENT_LINK.types[number];
+  tag: typeof CONTENT_ELEMENT_LINK.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_LINK.modifiers[number];
+};
+export type ContentElementImage = {
+  types: typeof CONTENT_ELEMENT_IMAGE.types[number];
+  tag: typeof CONTENT_ELEMENT_IMAGE.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_IMAGE.modifiers[number];
+};
+export type ContentElementDivider = {
+  types: typeof CONTENT_ELEMENT_DIVIDER.types[number];
+  tag: typeof CONTENT_ELEMENT_DIVIDER.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_DIVIDER.modifiers[number];
+};
+export type ContentElementBlock = {
+  types: typeof CONTENT_ELEMENT_BLOCK.types[number];
+  tag: typeof CONTENT_ELEMENT_BLOCK.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_BLOCK.modifiers[number];
+};
+export type ContentElementList = {
+  types: typeof CONTENT_ELEMENT_LIST.types[number];
+  tag: typeof CONTENT_ELEMENT_LIST.tags[number];
+  modifiers: typeof CONTENT_ELEMENT_LIST.modifiers[number];
+};
+
 interface ContentElementsByName {
-    text: ContentElementTextProps,
-    icon: typeof CONTENT_ELEMENT_ICON,
-    button: typeof CONTENT_ELEMENT_BUTTON,
-    link: typeof CONTENT_ELEMENT_LINK,
-    image: typeof CONTENT_ELEMENT_IMAGE,
-    divider: typeof CONTENT_ELEMENT_DIVIDER,
-    block: typeof CONTENT_ELEMENT_BLOCK,
-    list: typeof CONTENT_ELEMENT_LIST,
+  text: ContentElementTextProps;
+  icon: ContentElementIcon;
+  button: ContentElementButton;
+  link: ContentElementLink;
+  image: ContentElementImage;
+  divider: ContentElementDivider;
+  block: ContentElementBlock;
+  list: ContentElementList;
 }
 
-export type ContentElementsMap<T extends keyof ContentElementsByName> = ContentElementsByName[T];
+export type ContentElementsMap<T extends keyof ContentElementsByName> =
+  ContentElementsByName[T];
 
-export type ContentElement = ContentElementsByName[keyof ContentElementsByName]
+export type ContentElement = ContentElementsByName[keyof ContentElementsByName];
 
 export type ContentElementRendererProps<T extends ContentElementName> = {
-    name: T;
-}
+  name: T;
+};
 
-export type ContentElementProps<T extends ContentElementName> = Partial<ContentElementsMap<T>> & ContentElementRendererProps<T>;
+export type ContentElementProps<T extends ContentElementName> = Partial<
+  ContentElementsMap<T>
+> &
+  ContentElementRendererProps<T>;
 
-export type ContentElementTemplatesMap<T extends keyof typeof CONTENT_ELEMENT_TEMPLATES_BY_NAME> = typeof CONTENT_ELEMENT_TEMPLATES_BY_NAME[T];
+export type ContentElementTemplatesMap<
+  T extends keyof typeof CONTENT_ELEMENT_TEMPLATES_BY_NAME
+> = typeof CONTENT_ELEMENT_TEMPLATES_BY_NAME[T];
