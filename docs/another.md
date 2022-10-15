@@ -1,23 +1,83 @@
 # Another custom elements
+Another is a safe namespace for content development.
+
+Content development:
+- development of template components
+- cms content
+
+### ANOTHER
+How to use:
+
+```tsx
+type ANOTHER_ELEMENT_PROPS = {
+    name: ANOTHER_NAME,
+    tag?: ANOTHER_TAG,
+    modifiers?: ANOTHER_MODIFIER[],
+}
+
+<Another.El name={ANOTHER_NAME} /> // ANOTHER_NAME is required
+<Another.El name={ANOTHER_NAME} tag={ANOTHER_TAG} /> // ANOTHER_TAG ANOTHER_TAGS_BY_ANOTHER_NAME
+<Another.El name={ANOTHER_NAME} tag={ANOTHER_TAG} modifiers={ANOTHER_MODIFIER[]} /> // ANOTHER_MODIFIER
+```
 
 ### ANOTHER MAP
 ```typescript
-
-t
-const ANOTHER_TYPES_BY_ANOTHER_NAME = {
-    title: ['header', 'subheader', 'subtitle', 'text-title', 'section-title'],
-    text: ['caption', 'description'],
-    image: string[],
-    icon: string[],
-    list: ['disk', 'row', 'auto'],
-    button: ['ICON', 'primary', 'secondary', 'cta', 'sign-in', 'reg'],
-    link: ['BUTTON', 'image'],
-    divider: [],
-    block: ['BANNER', 'section', 'container'],
+const ANOTHER_ELEMENTS_BY_ANOTHER_NAME = {
+    text: {
+        types: ['title', 'subtitle', 'header', 'subheader', 'text-title', 'section-title', 'caption', 'description'],
+        tag: ['h3', 'h1', 'h2', 'h4', 'h5', 'h6', 'p', 'span', 'b', 'i', 'em'],
+        moifiers: ['center', 'left', 'right', 'bolder', 'thicker', 'big', 'sm'],
+    },
+    icon: {
+        types: [],
+        tag: ['svg'],
+        modifiers: [],
+    },
+    button: {
+        types: ['button-icon', 'primary', 'secondary', 'cta', 'sign-in', 'reg'],
+        tag: ['button', 'a'],
+        modifiers: ['row', 'auto', 'column'],
+    },
+    link: {
+        types: ['button'],
+        tag: ['button', 'a'],
+        modifiers: [],
+    },
+    image: {
+        types: [],
+        tag: ['image'],
+        modifiers: [],
+    },
+    divider: {
+        types: [],
+        tag: ['hr'],
+        modifiers: [],
+    },
+    block: {
+        types: ['banner', 'section', 'container'],
+        tag: ['hr'],
+        modifiers: [],
+    },
+    list: {
+        types: ['list-disk', 'list-oredered', 'list-grid'],
+        tag: ['ul', 'ol'],
+        modifiers: ['row', 'auto', 'column'],
+    },
 } as const;
 
 type ANOTHER_MAP = typeof ANOTHER_TYPES_BY_ANOTHER_NAME;
 ```
+
+```tsx
+type ANOTHER_NAME = title | image | icon | list | button | link | divider | block;
+
+<Another.El name={ANOTHER_NAME} />
+
+
+<Another.El name={button} />
+
+```
+
 
 ### ANOTHER NAME
 
@@ -39,8 +99,8 @@ type ANOTHER_TYPE = ANOTHER_MAP[keyof ANOTHER_MAP][number]
 
 `ANOTHER_TYPE` is here to provide:
 1. Different structure or _subrole_(f.e. 'BUTTON', 'ICON')
-2. Commonly used lists of modifiers(f.e. 'section-title', 'secondary') or 
-styles that can not be provided by `ANOTHER_MODIFIERS`
+2. Commonly used lists of modifiers(f.e. 'section-title', 'secondary') or
+   styles that can not be provided by `ANOTHER_MODIFIERS`
 3. Commonly used business/dev logic patterns(f.e. 'cta', 'sign-in', 'section')
 
 ### ANOTHER MODIFIERS
@@ -64,7 +124,7 @@ type ANOTHER_ELEMENT = {
 ```
 
 `anotherType` stands for `BASE_ANOTHER_CLASSNAME`.  
-If `anotherType` is not provided explicitly it equals to 
+If `anotherType` is not provided explicitly it equals to
 the name of another element.
 
 ```tsx
