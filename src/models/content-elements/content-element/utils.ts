@@ -24,6 +24,7 @@ export function getContentElementTag<Name extends ContentElementName>(
     contentElementProps.tag &&
     checkIsTagValidByName(contentElementProps.tag, name)
   ) {
+    return contentElementProps.tag;
   }
 
   return getDefaultTagByName(name);
@@ -39,6 +40,7 @@ function checkIsTagValidByName<Name extends ContentElementName>(
 ) {
   // TODO fix: WTF?
   // Type 'string' is not assignable to type 'never'
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore-next-line
   return CONTENT_ELEMENTS_BY_NAME[name].tags.includes(tag);
 }
