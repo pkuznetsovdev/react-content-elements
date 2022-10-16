@@ -5,8 +5,8 @@ import {
 import {
   ContentElementName,
   ContentElementTag,
-} from "models/content-elements/types";
-import { ContentElementProps } from "./types";
+  ContentElementProps,
+} from "./types";
 
 export function getContentElementTemplateByName<
   Name extends ContentElementName
@@ -16,9 +16,15 @@ export function getContentElementTemplateByName<
   return contentElementTemplate;
 }
 
+export function getCustomElementClassName<Name extends ContentElementName>(
+  name: Name
+) {
+  return `content-element content-${name}`;
+}
+
 export function getContentElementTag<Name extends ContentElementName>(
   name: Name,
-  contentElementProps: Omit<ContentElementProps<Name>, "name">
+  contentElementProps: ContentElementProps<Name>
 ) {
   if (
     contentElementProps.tag &&

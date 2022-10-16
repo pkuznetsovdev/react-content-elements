@@ -1,5 +1,5 @@
 {
-  "name": "another",
+  "name": "react-content-elements",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
   },
   "browserslist": {
     "production": [

@@ -64,9 +64,9 @@ export const CONTENT_ELEMENT_BLOCK = {
 } as const;
 
 export const CONTENT_ELEMENT_LIST = (() => {
-  const types = ["list-disk", "list-oredered", "list-grid"];
-  const tags = ["ul", "ol"];
-  const modifiers = ["row", "auto", "column"];
+  const types = ["list-disk", "list-oredered", "list-grid"] as const;
+  const tags = ["ul", "ol"] as const;
+  const modifiers = ["row", "auto", "column"] as const;
 
   return {
     _elementName: "list",

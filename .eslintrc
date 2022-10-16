@@ -37,7 +37,8 @@
       // If you don't want to extend any rules, you don't need an `extends` attribute.
       "extends": [
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended"
       ],
       "parserOptions": {
         "project": [
@@ -48,6 +49,7 @@
     }
   ],
   "rules": {
+    "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",

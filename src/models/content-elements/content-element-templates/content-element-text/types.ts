@@ -1,4 +1,5 @@
 import { HTMLAttributes } from "react";
+import { WithContentElementBaseModifier } from "models/content-elements/types";
 
 const CONTENT_ELEMENT_TEXT_TYPES = {
   _elementName: "text",
@@ -72,8 +73,8 @@ export const CONTENT_ELEMENT_TEXT = {
   modifiers: CONTENT_ELEMENT_TEXT_MODIFIERS.get(),
 } as const;
 
-export type ContentElementTextProps= HTMLAttributes<ContentElementTextTag> & {
-  types: ContentElementTextType;
+export type ContentElementTextProps = HTMLAttributes<ContentElementTextTag> & {
+  type: ContentElementTextType;
   tag: ContentElementTextTag;
-  modifiers: ContentElementTextModifier;
+  modifiers: WithContentElementBaseModifier<ContentElementTextModifier>[];
 };
