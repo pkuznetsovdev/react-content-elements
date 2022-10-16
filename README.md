@@ -1,46 +1,137 @@
-# Getting Started with Create React App
+# React content elements
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`ContentElement` is a safe namespace for content development.
 
-## Available Scripts
+Content development:
 
-In the project directory, you can run:
+- development of template components
+- development of custom components using template components(partially, for content or/and structure)
+- cms content development
 
-### `yarn start`
+### CONTENT ELEMENT
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```typescript
+type CONTENT_ELEMENT = {
+  type?: ContentElementType;
+  tag?: ContentElementTag;
+  modifiers?: ContentElementModifier[];
+}
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`ContentElement` is here to provide:
 
-### `yarn test`
+- a determined and predictable class naming patterns for your web content
+- a determined and predictable HTML structure patterns for your web content
+- a self documented codebase to develop your web content
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### Examples
 
-### `yarn build`
+```tsx
+<ContentElement.Text>Hello, World!</ContentElement.Text>
+// <p class="content-element content-text">Hello, World!</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<ContentElement.Text tag="h1">Hello, World!</ContentElement.Text>
+// <h1 class="content-element content-text">Hello, World!</h1>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<ContentElement.Text tag="span" modifiers={['accent']}>Hello, World!</ContentElement.Text>
+// <span class="content-element content-text content-element--accent">Hello, World!</span>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### CONTENT ELEMENT NAME
 
-### `yarn eject`
+```typescript
+type ContentElementName = keyof ContentElementMap;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`ContentElementName` is here to provide:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Base content element template(f.e. 'title')
+2. Divide elements by its _basic role_(f.e. 'icon')
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Fun facts:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- property 'name' of `ContentElement` stands for `ContentElementName`
+- property 'name' is used to generate `BASE_CONTENT_ELEMENT_CLASSNAME`.
 
-## Learn More
+```tsx
+const BASE_CONTENT_ELEMENT_CLASSNAME = `content-element content-${name}`;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<ContentElement.Text>Text content element</ContentElement.Text>
+// <p class="content-element content-text">Text content element</p>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### CONTENT ELEMENT TYPE
+
+```typescript
+type ContentElementType = ContentElementMap[keyof ContentElementMap][number]
+```
+
+`ContentElementType` is here to provide:
+
+1. Another content element template or _subrole_(f.e. 'BUTTON', 'ICON')
+2. Commonly used lists of _content element modifiers_(f.e. 'section-title', 'secondary') or
+   styles that can not be provided by `CONTENT_ELEMENT_MODIFIERS`
+3. Commonly used business/dev logic patterns(f.e. 'cta', 'sign-in', 'section')
+
+Property 'type' of `ContentElement` stands for `ContentElementType`
+
+### CONTENT ELEMENT MODIFIERS
+
+```typescript
+type ContentElementModifier = string;
+```
+
+`ContentElementModifier` is here to provide:
+
+1. BEM class modifiers for the content element(f.e. 'accent', 'big', 'hide-md', 'hide-lower-sm');
+
+
+
+### CONTENT ELEMENT MAP
+
+```typescript
+const CONTENT_ELEMENTS_BY_NAME = {
+  text: {
+    types: ['title', 'subtitle', 'header', 'subheader', 'text-title', 'section-title', 'caption', 'description'],
+    tag: ['h3', 'h1', 'h2', 'h4', 'h5', 'h6', 'p', 'span', 'b', 'i', 'em'],
+    moifiers: ['center', 'left', 'right', 'bolder', 'thicker', 'big', 'sm'],
+  },
+  image: {
+    types: [],
+    tag: ['image'],
+    modifiers: [],
+  },
+  divider: {
+    types: [],
+    tag: ['hr'],
+    modifiers: [],
+  },
+  block: {
+    types: ['banner', 'section', 'container'],
+    tag: ['hr'],
+    modifiers: [],
+  },
+  list: {
+    types: ['list-disk', 'list-oredered', 'list-grid'],
+    tag: ['ul', 'ol'],
+    modifiers: ['row', 'auto', 'column'],
+  },
+  button: {
+    types: ['button-icon', 'primary', 'secondary', 'cta', 'sign-in', 'reg'],
+    tag: ['button', 'a'],
+    modifiers: ['row', 'auto', 'column'],
+  },
+  link: {
+    types: ['button'],
+    tag: ['button', 'a'],
+    modifiers: [],
+  },
+  icon: {
+    types: [],
+    tag: ['svg'],
+    modifiers: [],
+  },
+} as const;
+
+type ContentElementMap = typeof CONTENT_ELEMENTS_BY_NAME;
+```

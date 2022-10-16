@@ -27,13 +27,13 @@ type CONTENT_ELEMENT = {
 ##### Examples
 
 ```tsx
-<ContentElement name="text">Hello, World!</ContentElement>
+<ContentElement.Text>Hello, World!</ContentElement>
 // <p class="content-element content-text">Hello, World!</p>
 
-<ContentElement name="text" tag="h1">Hello, World!</ContentElement>
+<ContentElement.Text tag="h1">Hello, World!</ContentElement>
 // <h1 class="content-element content-text">Hello, World!</h1>
 
-<ContentElement name="text" tag="span" modifiers={['accent']}>Hello, World!</ContentElement>
+<ContentElement.Text tag="span" modifiers={['accent']}>Hello, World!</ContentElement>
 // <span class="content-element content-text content-element--accent">Hello, World!</span>
 ```
 
@@ -165,7 +165,7 @@ Fun facts:
 ```tsx
 const BASE_CONTENT_ELEMENT_CLASSNAME = `content-element content-${name}`; 
 
-<ContentElement name="text">Text content element</ContentElement>
+<ContentElement.Text>Text content element</ContentElement.Text>
 // <p class="content-element content-text">Text content element</p>
 ```
 
