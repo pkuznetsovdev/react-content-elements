@@ -1,31 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import ContentElement from "./models/content-elements";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-          data-alt="logo"
-          data-alt1="logo"
-        />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ContentElement.Text tag="h1">Hello world</ContentElement.Text>
+      <ContentElement.Text>
+        This is a text element with type{" "}
+        <ContentElement.Text tag="span" modifiers={["accent"]}>
+          'text-title'
+        </ContentElement.Text>
+      </ContentElement.Text>
+      <ContentElement.Text>This is a default text element</ContentElement.Text>
+    </>
   );
 }
 
