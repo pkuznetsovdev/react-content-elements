@@ -18,9 +18,9 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "rm -rf dist/ && npm run format && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build:esm": "tsc",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
   },
@@ -52,5 +52,16 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.7.1"
-  }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Pavel Kuznetsov",
+    "url": "https://www.linkedin.com/in/hereispavel/",
+    "email": "kuznetsov.pavel@protonmail.com"
+  },
+  "license": "ISC"
 }
