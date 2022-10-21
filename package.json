@@ -18,9 +18,12 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "build": "rm -rf dist/ && npm run format && npm run build:esm && npm run build:cjs",
-    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
-    "build:esm": "tsc",
+    "build": "npm run clean && npm run format && npm run build:js && npm run build:setup",
+    "clean": "rm -rf dist/",
+    "build:js": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc --module CommonJS --outDir ./dist/cjs",
+    "build:esm": "tsc --outDir ./dist/esm",
+    "build:setup": "tsc ./scripts/index.ts && node ./scripts/index.js",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
   },
@@ -51,7 +54,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "tsc-alias": "^1.7.0"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
