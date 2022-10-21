@@ -1,7 +1,7 @@
 {
   "name": "react-content-elements",
   "description": "A safe namespace for web content development",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
