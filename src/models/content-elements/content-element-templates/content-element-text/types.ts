@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { WithContentElementBaseModifier } from "models/content-elements/types";
+import { WithContentElementBaseModifier } from "src/models/content-elements/types";
 
 const CONTENT_ELEMENT_TEXT_TYPES = {
   _elementName: "text",
