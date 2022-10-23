@@ -1,6 +1,6 @@
 import React from "react";
 import { ContentElementTextProps } from "./types";
-import type { FCWithChildren } from "shared/types";
+import type { FCWithChildren } from "src/shared/types";
 
 // no name
 const ContentElementText: FCWithChildren<ContentElementTextProps> = ({

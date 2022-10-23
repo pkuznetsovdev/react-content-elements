@@ -1,3 +1,4 @@
+import React from "react";
 import { CONTENT_ELEMENT_TEMPLATES_BY_NAME } from "./constants";
 import { WithContentElementTemplateProps } from "./hoc";
 import { ContentElementProps } from "./types";

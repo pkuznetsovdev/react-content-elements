@@ -1,5 +1,5 @@
 import { CONTENT_ELEMENT_BASE_MODIFIERS } from "../constants";
-import { ExtendsString } from "shared/types";
+import { ExtendsString } from "src/shared/types";
 
 export type ContentElementBaseModifier =
   typeof CONTENT_ELEMENT_BASE_MODIFIERS[number];
