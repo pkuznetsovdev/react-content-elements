@@ -1,14 +1,6 @@
 const path = require("path");
 
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
-const DeclarationBundlerPlugin = require('./package-config/declaration-bundler-webpack-plugin.fix')
-
 const isProduction = process.env.NODE_ENV == "production";
-
-const stylesHandler = 'style-loader';
 
 const config = {
   entry: "./src/index.ts",
@@ -17,8 +9,6 @@ const config = {
     chunkFilename: '[name].js',
     filename: '[name].js'
   },
-  plugins: [
-  ],
   module: {
     rules: [
       {
@@ -28,22 +18,19 @@ const config = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [stylesHandler, "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
       },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+  plugins: [
+  ],
+  context: path.resolve(__dirname),
   resolve: {
     extensions: [".tsx", ".ts"],
-    plugins: [
-      new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })
-    ],
   },
 };
 

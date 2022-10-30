@@ -1,4 +1,4 @@
-import { ContentElementTextProps } from "src/models/content-elements/content-element-templates/content-element-text";
+import { ContentElementTextProps } from "../../content-elements/content-element-templates/content-element-text";
 import {
   CONTENT_ELEMENT_BLOCK,
   CONTENT_ELEMENT_BUTTON,
