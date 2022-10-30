@@ -1,4 +1,7 @@
 import {
+  BASE_CLASSNAME,
+} from "../constants";
+import {
   CONTENT_ELEMENT_TEMPLATES_BY_NAME,
   CONTENT_ELEMENTS_BY_NAME,
 } from "./constants";
@@ -16,10 +19,10 @@ export function getContentElementTemplateByName<
   return contentElementTemplate;
 }
 
-export function getCustomElementClassName<Name extends ContentElementName>(
+export function getContentElementClassName<Name extends ContentElementName>(
   name: Name
 ) {
-  return `content-element content-${name}`;
+  return `${BASE_CLASSNAME} ${BASE_CLASSNAME}-${name}`;
 }
 
 export function getContentElementTag<Name extends ContentElementName>(

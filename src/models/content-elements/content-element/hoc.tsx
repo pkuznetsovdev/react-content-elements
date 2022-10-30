@@ -3,7 +3,7 @@ import {
   ContentElementTemplatesMap,
   ContentElementName,
 } from "./types";
-import { getContentElementTag, getCustomElementClassName } from "./utils";
+import { getContentElementTag, getContentElementClassName } from "./utils";
 import React from "react";
 
 export function WithContentElementTemplateProps<
@@ -12,7 +12,7 @@ export function WithContentElementTemplateProps<
   return (name: Name, contentElementProps: ContentElementProps<Name>) => {
     const contentElementTemplateProps = {
       tag: getContentElementTag(name, contentElementProps),
-      className: getCustomElementClassName(name),
+      className: getContentElementClassName(name),
     };
 
     return (
