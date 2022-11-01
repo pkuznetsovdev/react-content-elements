@@ -1,23 +1,26 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "jsx": "react",
-    "baseUrl": "./",
-    "outDir": "./dist/",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "target": "ESNext",
+    "module": "umd",
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "jsx": "preserve",
+    "noEmit": false,
     "sourceMap": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "declaration": true,
+    "outDir": "./dist",
+    "emitDeclarationOnly": true,
   },
-  "files": ["src/index.ts"]
+  "include": ["src"]
 }

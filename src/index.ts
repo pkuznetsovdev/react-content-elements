@@ -1,2 +1,4 @@
-export { default } from "./models/content-elements";
-export * from "./models/content-elements";
+import  { ContentElements } from './models/content-elements/content-element';
+export default ContentElements;
+
+export { WithContentElementTemplateProps } from './models/content-elements/content-element/hoc';

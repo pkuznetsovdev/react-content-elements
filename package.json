@@ -1,53 +1,52 @@
 {
-  "name": "react-content-elements",
+  "name": "content-elements",
   "description": "A safe namespace for web content development",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "author": {
     "name": "Pavel Kuznetsov",
     "url": "https://www.linkedin.com/in/hereispavel/",
-    "email": "kuznetsov.pavel@protonmail.com"
+    "email": "kuznetsov.pavel@gmail.com"
   },
   "license": "ISC",
   "private": false,
   "keywords": [
     "content",
-    "cms",
     "content-elements",
     "react",
-    "react-content-elements"
+    "react-content-elements",
+    "cms"
   ],
-  "main": "dist/main.js",
+  "main": "dist/content-elements.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@types/react": "^18.0.21",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "declaration-bundler-webpack-plugin": "^1.0.3",
-    "mini-css-extract-plugin": "^2.6.1",
-    "prettier": "^2.7.1",
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/node": "^7.20.0",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.11.7",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^9.0.0",
+    "concurrently": "^7.5.0",
     "react": "^18.2.0",
-    "sass": "^1.55.0",
-    "sass-loader": "^13.1.0",
+    "react-dom": "^18.2.0",
     "ts-loader": "^9.4.1",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "^4.8.4",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },
-  "devDependencies": {
-    "@types/node": "^18.11.3",
-    "@types/webpack": "^5.28.0",
-    "@webpack-cli/generators": "^2.5.0"
-  },
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch"
+    "build": "npm run clean && npm run build:types && npm run build:js",
+    "build:js": "webpack",
+    "build:types": "tsc",
+    "dev": "npm run clean && concurrently --kill-others \"npm run watch:js\" \"npm run watch:types\"",
+    "watch:js": "NODE_ENV=development webpack -w",
+    "watch:types": "tsc --watch",
+    "clean": "rm -rf dist"
   }
 }
