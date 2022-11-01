@@ -6,7 +6,7 @@ import type { FCWithChildren } from "../../../../shared/types";
 const ContentElementText: FCWithChildren<ContentElementTextProps> = ({
   children,
   tag: TagName,
-  className,
+  className
 }) => {
   return <TagName className={className}>{children}</TagName>;
 };

@@ -1,2 +1,3 @@
-export { default } from "./content-element";
-export * from "./content-element";
+import { ContentElements, WithContentElementTemplateProps } from "./content-element";
+
+export { ContentElements, WithContentElementTemplateProps };
