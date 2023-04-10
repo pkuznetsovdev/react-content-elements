@@ -1,8 +1,9 @@
 {
   "name": "react-content-elements",
-  "version": "1.1.104",
+  "version": "1.1.107",
   "private": false,
-  "main": "./dist/bundle.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "homepage": "https://pkuznetsov.github.io/rce",
   "author": {
@@ -32,11 +33,6 @@
     "prepublishOnly": "npm run prettier && npm run lint",
     "publish": "npm publish"
   },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.2"
-  },
   "devDependencies": {
     "@types/react": "^18.0.33",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -52,7 +48,9 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.8.2",
+    "sass-bundle-webpack-plugin": "^0.0.2",
     "sass-loader": "^13.2.2",
+    "scss-bundle": "^3.1.2",
     "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",

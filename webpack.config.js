@@ -1,27 +1,24 @@
 const path = require('path');
+const SassBundleWebpackPlugin = require('sass-bundle-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.ts",
     mode: "production",
-    output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
-    },
     module: {
         rules: [
-            {
-                test: /\.(ts|tsx)$/,
-                include: path.join(__dirname, './src'),
-                use: [
-                    {
-                        loader: 'ts-loader',
-                    },
-                ],
-            },
             { test: /\.scss$/, use: [ "style-loader", "css-loader", "sass-loader" ] },
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js']
-    }
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss']
+    },
+    plugins: [
+        new SassBundleWebpackPlugin({
+            file: path.join(__dirname, 'src/core/styles/utils/index.scss'),
+            type: 'sass',
+            output: {
+                name: 'utils'
+            },
+        }),
+    ],
 }

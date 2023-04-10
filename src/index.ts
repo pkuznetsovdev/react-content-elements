@@ -15,3 +15,4 @@ export const CE = {
 } as const;
 
 export * from './utils';
+export * from './core/shared';
