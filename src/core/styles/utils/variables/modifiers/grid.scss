@@ -1,0 +1,31 @@
+@use "../breakpoints" as *;
+
+:root {
+  /**
+   * User input values.
+   */
+  --grid-display: grid;
+  --grid-gap: 20px;
+
+  --grid-template-columns-min: 1;
+  --grid-template-columns-xs: 2;
+  --grid-template-columns-sm: 3;
+  --grid-template-columns-xl: 4;
+
+  /**
+   * Calculated values.
+   */
+  --grid-template-columns: repeat(var(--grid-template-columns-min), 1fr);
+
+  @media screen and (min-width: #{$screen-xs}) {
+    --grid-template-columns: repeat(var(--grid-template-columns-xs), 1fr);
+  }
+
+  @media screen and (min-width: #{$screen-sm}) {
+    --grid-template-columns: repeat(var(--grid-template-columns-sm), 1fr);
+  }
+
+  @media screen and (min-width: #{$screen-xl}) {
+    --grid-template-columns: repeat(var(--grid-template-columns-xl), 1fr);
+  }
+}

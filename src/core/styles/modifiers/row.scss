@@ -1,0 +1,14 @@
+@use '../utils' as *;
+
+@include byModifier('row') {
+  display: var(--row-display);
+  flex-direction: var(--row-direction);
+
+  & > #{$ce-base-name} {
+    & + #{$ce-base-name} {
+
+      margin-top: 0;
+      margin-left: var(--ce-margin);
+    }
+  }
+}

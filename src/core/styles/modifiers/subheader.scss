@@ -1,0 +1,7 @@
+@use '../utils' as *;
+
+@include byModifier('subheader') {
+  margin: var(--subheader-margin);
+
+  text-align: var(--subheader-text-align);
+}

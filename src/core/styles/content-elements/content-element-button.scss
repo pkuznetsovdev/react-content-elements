@@ -1,0 +1,12 @@
+@use '../utils' as *;
+
+@include byName('button') {
+  //width: var(--button-width);
+  cursor: var(--button-cursor);
+
+  color: var(--text-color);
+
+  background: none;
+  outline: none;
+  border: none;
+}

@@ -1,0 +1,9 @@
+@use '../utils' as *;
+
+@include byName('link') {
+  color: var(--text-color);
+
+  &:hover {
+    text-decoration: unset;
+  }
+}

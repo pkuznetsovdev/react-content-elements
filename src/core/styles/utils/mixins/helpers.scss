@@ -1,0 +1,19 @@
+@use '../variables' as *;
+
+@mixin nextByName($ce-name: '') {
+  @if ($ce-name == '') {
+    & + #{$ce-base-name} {
+      @content;
+    }
+  } @else {
+    & + #{$ce-base-name}-#{$ce-name} {
+      @content;
+    }
+  }
+}
+
+@mixin nextByModifier($ce-modifier: '') {
+  & + #{$ce-base-name}--#{$ce-modifier} {
+    @content;
+  }
+}

@@ -1,0 +1,7 @@
+@use '../utils' as *;
+
+@include byModifier('grid') {
+  display: var(--grid-display);
+  grid-gap: var(--grid-gap);
+  grid-template-columns: var(--grid-template-columns);
+}

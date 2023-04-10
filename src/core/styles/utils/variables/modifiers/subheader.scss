@@ -1,0 +1,17 @@
+:root {
+  /**
+   * User input values.
+   */
+
+  --subheader-text-align: center;
+
+  --subheader-margin-top: 0;
+  --subheader-margin-right: auto;
+  --subheader-margin-bottom: .2em;
+  --subheader-margin-left: auto;
+
+  /**
+   * Calculated values.
+   */
+  --subheader-margin: var(--subheader-margin-top) var(--subheader-margin-right) var(--subheader-margin-bottom) var(--subheader-margin-left);
+}

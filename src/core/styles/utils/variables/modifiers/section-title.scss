@@ -1,0 +1,18 @@
+:root {
+  /**
+   * User input values.
+   */
+  --section-title-font-size: calc(var(--text-font-size) * 1.6);
+
+  --section-title-text-align: center;
+
+  --section-title-margin-top: 0;
+  --section-title-margin-right: auto;
+  --section-title-margin-bottom: 1em;
+  --section-title-margin-left: auto;
+
+  /**
+   * Calculated values.
+   */
+  --section-title-margin: var(--section-title-margin-top) var(--section-title-margin-right) var(--section-title-margin-bottom) var(--section-title-margin-left);
+}

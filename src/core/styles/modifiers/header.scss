@@ -1,0 +1,17 @@
+@use '../utils' as *;
+
+@include byModifier('header') {
+  margin: var(--header-margin);
+
+  font-size: var(--header-font-size);
+  font-weight: var(--header-font-weight);
+  line-height: var(--header-line-height);
+  text-align: var(--header-text-align);
+  text-transform: var(--header-text-transform);
+
+
+  @include nextByName('subheader') {
+    margin-top: calc(var(--header-margin-bottom) * (-1));
+    font-style: italic;
+  }
+}

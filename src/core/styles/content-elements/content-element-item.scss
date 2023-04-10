@@ -1,0 +1,9 @@
+@use '../utils' as *;
+
+@include byName('item') {
+  margin: var(--item-margin);
+
+  & + & {
+    margin: var(--item-margin);
+  }
+}

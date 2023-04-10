@@ -1,35 +1,27 @@
-const path = require("path");
-
-const IS_DEVELOP = process.env.NODE_ENV === "development";
-const IS_PRODUCTION = [ !IS_DEVELOP ].every(Boolean);
-const PATHS = {
-  source: path.resolve(__dirname, "src")
-};
+const path = require('path');
 
 module.exports = {
-  mode: process.env.NODE_ENV || "production",
-  entry: "./src/index.ts",
-  output: {
-    filename: "content-elements.js",
-    path: path.resolve(__dirname, "./dist"),
-    library: {
-      name: "ContentElements",
-      type: "umd"
+    entry: "./src/index.ts",
+    mode: "production",
+    output: {
+        path: path.join(__dirname, '/dist'),
+        filename: 'bundle.js'
     },
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|ts)x?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
-  },
-  resolve: {
-    extensions: [ ".js", "jsx", ".ts", ".tsx" ]
-  },
-  devtool: IS_DEVELOP ? "source-map" : undefined
-};
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                include: path.join(__dirname, './src'),
+                use: [
+                    {
+                        loader: 'ts-loader',
+                    },
+                ],
+            },
+            { test: /\.scss$/, use: [ "style-loader", "css-loader", "sass-loader" ] },
+        ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js']
+    }
+}

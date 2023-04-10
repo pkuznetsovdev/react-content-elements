@@ -1,0 +1,32 @@
+$container-content-max-width: 1440px;
+
+:root {
+  /**
+   * User input values.
+   */
+  --container-width: 100%;
+  --container-align: center;
+  --container-margin-top: 0;
+  --container-margin-right: auto;
+  --container-margin-bottom: 0;
+  --container-margin-left: auto;
+
+  --container-content-max-width: #{$container-content-max-width};
+
+  --container-padding: 20px;
+  --container-padding--sm: 48px;
+  --container-padding--md: 32px;
+  --container-padding--lg: 68px;
+  --container-padding--xl: 48px;
+
+  /**
+   * Calculated values.
+   */
+  --container-margin: var(--container-margin-top) var(--container-margin-right) var(--container-margin-bottom) var(--container-margin-left);
+
+  --container-max-width: calc(var(--container-width) + 2 * var(--container-padding));
+  --container-max-width--sm: calc(var(--container-width) + 2 * var(--container-padding--sm));
+  --container-max-width--md: calc(var(--container-width) + 2 * var(--container-padding--md));
+  --container-max-width--lg: calc(var(--container-width) + 2 * var(--container-padding--lg));
+  --container-max-width--xl: calc(var(--container-content-max-width) + 2 * var(--container-padding--xl));
+}
