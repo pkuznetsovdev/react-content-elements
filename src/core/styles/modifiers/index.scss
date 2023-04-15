@@ -1,16 +1,16 @@
-@forward "header";
-@forward "subheader";
-@forward "title";
-@forward "subtitle";
-@forward "section-title";
-@forward "italic";
-@forward "accent";
-@forward "section";
-@forward "page";
-@forward 'disc';
-@forward 'with-disc';
+@import"header";
+@import"subheader";
+@import"title";
+@import"subtitle";
+@import"section-title";
+@import"italic";
+@import"accent";
+@import"section";
+@import"page";
+@import'disc';
+@import'with-disc';
 
-@forward "container";
+@import"container";
 
-@forward "grid";
-@forward "row";
+@import"grid";
+@import"row";

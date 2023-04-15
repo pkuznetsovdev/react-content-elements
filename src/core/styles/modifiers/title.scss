@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@import '../utils';
 
 @include byModifier('title') {
   font-size: var(--title-font-size);

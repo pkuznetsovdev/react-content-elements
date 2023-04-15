@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@import '../utils';
 
 @include byModifier('subheader') {
   margin: var(--subheader-margin);

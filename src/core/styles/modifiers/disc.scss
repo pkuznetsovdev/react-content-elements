@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@import '../utils';
 
 @include byModifier('disc') {
   list-style-type: var(--disc-list-style-type);
