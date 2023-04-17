@@ -1,25 +1,34 @@
-const path = require('path');
-const SassBundleWebpackPlugin = require('sass-bundle-webpack-plugin');
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const PATHS = {
     ENTRY: './src/index.ts',
-    OUTPUT: './dist'
-};
+    ENTRY_STYLES: './src/core/styles/index.scss',
+    OUTPUT: './dist',
+}
 
 const WEBPACK = {
     outputFileName: 'bundle.js',
-};
+}
 
 module.exports = {
-    entry: PATHS.ENTRY,
-    mode: "production",
-    target: "web",
+    entry: [PATHS.ENTRY, PATHS.ENTRY_STYLES],
+    mode: 'production',
+    target: 'web',
     output: {
-        path: path(__dirname, PATHS.OUTPUT),
+        publicPath: "/dist",
+        path: path.resolve(__dirname, PATHS.OUTPUT),
         filename: WEBPACK.outputFileName,
+        clean: true,
+        globalObject: 'this',
+        library: {
+            name: 'RCE',
+            type: 'umd',
+        },
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss']
+        extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
     },
     module: {
         rules: [
@@ -33,9 +42,9 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-env",
-                            "@babel/preset-react",
-                            "@babel/preset-typescript"]
+                        presets: [ '@babel/preset-env',
+                            '@babel/preset-react',
+                            '@babel/preset-typescript' ],
                     },
                 },
                 exclude: /node_modules/,
@@ -45,35 +54,49 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     // Creates `style` nodes from JS strings
-                    "style-loader",
+                    'style-loader',
                     // Translates CSS into CommonJS
-                    "css-loader",
+                    'css-loader',
                 ],
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
-                    "style-loader",
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
-                    "css-loader",
+                    'css-loader',
                     // Compiles Sass to CSS
-                    "sass-loader",
+                    'sass-loader',
                 ],
             },
             {
                 test: /\.(jpe?g|png|svg|ttf)$/i,
-                type: "asset/resource",
+                type: 'asset/resource',
             },
-        ]
+        ],
     },
-    // plugins: [
-    //     new SassBundleWebpackPlugin({
-    //         file: path.join(__dirname, 'src/core/styles/utils/index.scss'),
-    //         type: 'sass',
-    //         output: {
-    //             name: 'utils'
-    //         },
-    //     }),
-    // ],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        }),
+        new CopyPlugin({
+            patterns: [
+                // { from: './README.md' },
+                // { from: './package.json' },
+                {
+                    from: '**/*',
+                    context: path.resolve(__dirname, 'src', 'core/styles/utils'),
+                    to: 'styles',
+                },
+            ],
+        }),
+    ],
+    externals: {
+        react: 'react',
+        'react-dom': 'react-dom',
+        'react-router-dom': 'react-router-dom',
+    },
 }

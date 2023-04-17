@@ -10,7 +10,6 @@ import { MY_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME, MY_ELEMENTS_BY_NAME } from './
 import { WithMyElementConfig } from './with-my-element-config';
 import { validateUnreachableCode } from './utils';
 import { useValidateMyElementProps } from './hooks';
-import './styles/index.scss';
 
 export const getMyElementByNameRenderer = <ElementName extends MyElementName>(
   elementTemplatesByName?: Record<ElementName, React.FC<MyElementProps<ElementName>>>,

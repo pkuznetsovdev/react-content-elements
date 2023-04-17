@@ -48,6 +48,7 @@ function useGetCurrentBreakpointName() {
     const breakpoint = BREAKPOINTS_BY_NAME[breakpointName];
 
     if (breakpoint.from <= currentScreenWidth && breakpoint.to >= currentScreenWidth) {
+      // @ts-ignore
       currentBreakpoint = breakpointName;
       break;
     }
