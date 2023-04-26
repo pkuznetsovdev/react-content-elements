@@ -1,7 +1,7 @@
 @import '../utils';
 
 @include byModifier('section-title') {
-  margin: var(--section-title-text-margin);
+  margin: var(--section-title-margin);
 
   font-size: var(--section-title-font-size);
   text-align: var(--section-title-text-align);

@@ -5,14 +5,14 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es6",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": false,
     "declaration": true,
     "sourceMap": true,
     "rootDir": "src",
-    "outDir": "./dist/esm",
+    "outDir": "./dist/types",
     "strict": true,
     "moduleResolution": "node",
     "jsx": "react",

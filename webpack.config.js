@@ -21,11 +21,8 @@ module.exports = {
         path: path.resolve(__dirname, PATHS.OUTPUT),
         filename: WEBPACK.outputFileName,
         clean: true,
-        globalObject: 'this',
-        library: {
-            name: 'RCE',
-            type: 'umd',
-        },
+        library: 'RCE',
+        libraryTarget: 'umd',
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
@@ -95,8 +92,7 @@ module.exports = {
         }),
     ],
     externals: {
-        react: 'react',
-        'react-dom': 'react-dom',
-        'react-router-dom': 'react-router-dom',
+        "React": "react",
+        "ReactDOM": "react-dom"
     },
 }

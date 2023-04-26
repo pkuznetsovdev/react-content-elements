@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { getMyElementByNameRenderer } from './core';
 
 const getMyElementByName = getMyElementByNameRenderer();
@@ -13,6 +15,8 @@ export const CE = {
   Icon: getMyElementByName('icon'),
   Custom: getMyElementByName('custom'),
 } as const;
+
+export default CE;
 
 export * from './utils';
 export * from './core/shared';

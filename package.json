@@ -1,9 +1,9 @@
 {
   "name": "react-content-elements",
-  "version": "1.1.108-webpack-1.0.2",
+  "version": "1.1.108-webpack-umd",
   "private": false,
   "main": "./dist/bundle.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "homepage": "https://pkuznetsov.github.io/rce",
   "author": {
     "name": "Pavel Kuznetsov",
@@ -23,15 +23,15 @@
     "url": "git+https://github.com/pkuznetsovdev/rce.git"
   },
   "scripts": {
+    "build:webpack": "webpack --mode production",
+    "publish": "npm publish",
     "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "build:webpack": "webpack --mode production",
     "lint": "eslint --fix \"{src/**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,example}/**/*.{js,ts,jsx,tsx}\"",
     "prepare": "npm run build:webpack",
-    "prepublishOnly": "npm run prettier && npm run lint",
-    "publish": "npm publish"
+    "prepublishOnly": "npm run prettier && npm run lint"
   },
   "peerDependencies": {
     "react": "^18.2.0",
