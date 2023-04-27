@@ -21,7 +21,7 @@ module.exports = {
         path: path.resolve(__dirname, PATHS.OUTPUT),
         filename: WEBPACK.outputFileName,
         clean: true,
-        library: 'RCE',
+        library: 'react-content-elements',
         libraryTarget: 'umd',
     },
     resolve: {

@@ -1,6 +1,6 @@
 {
   "name": "react-content-elements",
-  "version": "1.1.108-webpack-umd",
+  "version": "1.1.108-webpack-umd-1.0.0",
   "private": false,
   "main": "./dist/bundle.js",
   "types": "./dist/types/index.d.ts",
