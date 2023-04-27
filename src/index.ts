@@ -25,4 +25,4 @@ module.exports = {
   CE,
   ...utils,
   ...shared,
-}
+};
