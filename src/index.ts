@@ -18,5 +18,11 @@ export const CE = {
 
 export default CE;
 
-export * from './utils';
-export * from './core/shared';
+import * as utils from './utils';
+import * as shared from './core/shared';
+
+module.exports = {
+  CE,
+  ...utils,
+  ...shared,
+}

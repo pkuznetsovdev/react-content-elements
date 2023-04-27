@@ -5,8 +5,8 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
+    "module": "commonjs",
+    "target": "es5",
     "lib": ["dom", "esnext"],
     "importHelpers": false,
     "declaration": true,

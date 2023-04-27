@@ -21,8 +21,9 @@ module.exports = {
         path: path.resolve(__dirname, PATHS.OUTPUT),
         filename: WEBPACK.outputFileName,
         clean: true,
-        library: 'react-content-elements',
+        library: 'CE',
         libraryTarget: 'umd',
+        globalObject: 'this',
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
@@ -41,7 +42,7 @@ module.exports = {
                     options: {
                         presets: [ '@babel/preset-env',
                             '@babel/preset-react',
-                            '@babel/preset-typescript' ],
+                            '@babel/preset-typescript', ],
                     },
                 },
                 exclude: /node_modules/,
