@@ -23,28 +23,19 @@ module.exports = {
         clean: true,
         library: 'CE',
         libraryTarget: 'umd',
-        globalObject: 'this',
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
+    },
+    optimization: {
+        minimize: false,
+        usedExports: false,
     },
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
                 use: 'ts-loader',
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.(js|jsx)$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [ '@babel/preset-env',
-                            '@babel/preset-react',
-                            '@babel/preset-typescript', ],
-                    },
-                },
                 exclude: /node_modules/,
             },
             {

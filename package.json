@@ -25,7 +25,7 @@
   "scripts": {
     "build:webpack": "webpack --mode production",
     "publish": "npm publish",
-    "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
+    "build:deprecated": "rm -rf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint --fix \"{src/**/*,*}.{js,ts,jsx,tsx}\"",
