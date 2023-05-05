@@ -9,12 +9,15 @@ const PATHS = {
 }
 
 const WEBPACK = {
-    outputFileName: 'bundle.js',
+    outputFileName: 'index.js',
 }
 
 module.exports = {
     entry: [PATHS.ENTRY, PATHS.ENTRY_STYLES],
     mode: 'production',
+    optimization: {
+		minimize: false
+	},
     target: 'web',
     output: {
         publicPath: "/dist",
@@ -23,7 +26,6 @@ module.exports = {
         clean: true,
         library: 'CE',
         libraryTarget: 'umd',
-        globalObject: 'this',
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
@@ -35,18 +37,11 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
-            {
-                test: /\.(js|jsx)$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [ '@babel/preset-env',
-                            '@babel/preset-react',
-                            '@babel/preset-typescript', ],
-                    },
-                },
+            /* {
+                test: '/\.(ts|tsx)$/',
                 exclude: /node_modules/,
-            },
+                loader: 'babel-loader'
+            }, */
             {
                 test: /\.css$/i,
                 exclude: /node_modules/,

@@ -5,9 +5,9 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["ES2018", "dom"],
     "importHelpers": false,
     "declaration": true,
     "sourceMap": true,
@@ -19,6 +19,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "noEmitOnError": false,
     "noEmit": false,

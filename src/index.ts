@@ -1,10 +1,10 @@
-import React from 'react';
+// import React from 'react';
 
 import { getMyElementByNameRenderer } from './core';
 
 const getMyElementByName = getMyElementByNameRenderer();
 
-export const CE = {
+const CE = {
   Text: getMyElementByName('text'),
   Image: getMyElementByName('image'),
   Block: getMyElementByName('block'),
@@ -14,14 +14,14 @@ export const CE = {
   Button: getMyElementByName('button'),
   Icon: getMyElementByName('icon'),
   Custom: getMyElementByName('custom'),
-} as const;
+};
 
-export default CE;
+//export default CE;
 
 import * as utils from './utils';
 import * as shared from './core/shared';
 
-module.exports = {
+export default {
   CE,
   ...utils,
   ...shared,
