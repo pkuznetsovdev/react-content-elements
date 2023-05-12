@@ -16,8 +16,8 @@ type MyElementConfigBase<ElementName extends MyElementName> = Partial<{
 }>;
 
 interface MyElementCofigContentMap<
-    ElementName extends MyElementName,
-    ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
+  ElementName extends MyElementName,
+  ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
 > {
   text: React.PropsWithChildren<{
     text?: string | Array<string> | false | null | 0 | MyElementConfig<ElementName>;
@@ -35,10 +35,10 @@ interface MyElementCofigContentMap<
 type MyElementCofigContent<ElementName extends MyElementName> = MyElementCofigContentMap<ElementName>[ElementName];
 
 export type MyElementConfig<ElementName extends MyElementName> = HTMLProps<any> &
-    MyElementConfigBase<ElementName> &
-    MyElementCofigContent<ElementName> &
-    ContentConditionParams &
-    MyElementSpecialProps<ElementName>;
+  MyElementConfigBase<ElementName> &
+  MyElementCofigContent<ElementName> &
+  ContentConditionParams &
+  MyElementSpecialProps<ElementName>;
 
 export type MyElementConfigProps<ElementName extends MyElementName> = Omit<MyElementConfig<ElementName>, 'myname'>;
 

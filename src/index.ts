@@ -1,5 +1,5 @@
 import React from 'react';
-import './core/styles/index.scss'
+import './core/styles/index.scss';
 
 import { getMyElementByNameRenderer } from './core';
 
@@ -22,9 +22,7 @@ const CE = {
 import * as utils from './utils';
 import * as shared from './core/shared';
 
-export {
-  CE
-}
+export { CE };
 
 export default {
   CE,

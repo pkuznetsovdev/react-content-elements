@@ -33,5 +33,3 @@ export type BreakpointName = keyof typeof BREAKPOINTS_BY_NAME;
 export const BREAKPOINT_NAMES = Object.keys(BREAKPOINTS_BY_NAME).map(
   (breakpointName) => breakpointName,
 ) as Array<BreakpointName>;
-
-

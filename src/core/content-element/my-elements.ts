@@ -19,7 +19,7 @@ export type MyElementTag<ElementName extends MyElementName> = keyof HTMLElementT
 export type MyElementModifiers<ElementName extends MyElementName> = string[];
 
 export type MyElementTemplateProps<ElementName extends MyElementName> = Parameters<
-    MyElementTemplatePropsMap[ElementName]
+  MyElementTemplatePropsMap[ElementName]
 >[0];
 
 export type MyElementSpecialProps<ElementName extends MyElementName> = {

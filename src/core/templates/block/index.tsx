@@ -11,7 +11,7 @@ export const Block = ({
   content,
   ...props
 }: BlockProps & WithMyTemplateElementProps) => {
-  const backgroundImageUrl = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true});
+  const backgroundImageUrl = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true });
 
   const style = {
     ...(backgroundImageUrl ? { backgroundImage: backgroundImageUrl } : {}),

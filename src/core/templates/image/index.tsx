@@ -10,7 +10,7 @@ export const Image = ({
   // @ts-ignore
   text,
   srcSet,
-    src,
+  src,
   ...props
 }: React.PropsWithChildren<ImageProps & WithMyTemplateElementProps>) => {
   const srcBySrcSet = useImageSrcBySrcSet(srcSet, { src });
