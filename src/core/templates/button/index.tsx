@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
+import { WithMyTemplateElementProps } from '../../content-element';
 
 export const Button = ({
   tag,

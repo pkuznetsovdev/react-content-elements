@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
+import { WithMyTemplateElementProps } from '../../content-element';
 
 export const Text = ({ children, tag: TagName, content, ...props }: TextProps & WithMyTemplateElementProps) => {
   if (content && typeof content === 'string') {

@@ -1,5 +1,6 @@
-import { ImageSrcSetProp } from '../../utils';
+import { ImageSrcSet } from '../../types';
 
 export interface BlockProps extends React.HTMLProps<HTMLDivElement> {
-  backgroundImage?: ImageSrcSetProp | string;
+  bgSrcSet?: ImageSrcSet | string;
+  bgSrc?: string;
 }

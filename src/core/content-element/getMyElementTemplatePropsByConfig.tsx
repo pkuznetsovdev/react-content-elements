@@ -1,5 +1,6 @@
-import { MyElementConfig, MyElementName, MyElementTemplateProps, MyElementModifiers } from '../types';
-import { BASE_CLASSNAME } from '../constants';
+import type { MyElementName, MyElementTemplateProps, MyElementModifiers } from './my-elements';
+import type { MyElementConfig } from './my-element-config';
+import { BASE_CLASSNAME } from './base-classname';
 
 export function getMyElementTemplatePropsByConfig<
   ElementName extends MyElementName,

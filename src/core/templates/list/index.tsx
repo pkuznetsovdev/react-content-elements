@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItemProps, ListProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
-import { BASE_CLASSNAME } from '../../constants';
+import type { WithMyTemplateElementProps } from '../../content-element';
+import { BASE_CLASSNAME } from '../../content-element/base-classname';
 import { SHARED_UTILS } from '../../../utils';
 
 export const List = ({

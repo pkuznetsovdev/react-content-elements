@@ -1,16 +1,17 @@
 import React from 'react';
 import { BlockProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
-import { useBgBySrcSet } from '../../utils';
+import { WithMyTemplateElementProps } from '../../content-element';
+import { useImageSrcBySrcSet } from '../../hooks';
 
 export const Block = ({
   children,
   tag: TagName,
-  backgroundImage,
+  bgSrcSet,
+  bgSrc,
   content,
   ...props
 }: BlockProps & WithMyTemplateElementProps) => {
-  const backgroundImageUrl = useBgBySrcSet(backgroundImage);
+  const backgroundImageUrl = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true});
 
   const style = {
     ...(backgroundImageUrl ? { backgroundImage: backgroundImageUrl } : {}),

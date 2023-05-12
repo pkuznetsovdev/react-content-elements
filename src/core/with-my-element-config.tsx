@@ -1,6 +1,6 @@
 import React from 'react';
-import { MyElementConfig, MyElementName, MyElementTemplateProps } from './types';
-import { getMyElementTemplatePropsByConfig } from './utils';
+import type { MyElementConfig, MyElementName, MyElementTemplateProps } from './content-element';
+import { getMyElementTemplatePropsByConfig } from './content-element';
 
 export const WithMyElementConfig =
   <ElementName extends MyElementName, ElementConfig extends MyElementConfig<ElementName>>(

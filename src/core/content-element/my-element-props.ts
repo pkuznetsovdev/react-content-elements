@@ -1,6 +1,6 @@
 /** START: MyElementProps */
 import React from 'react';
-import { MyElementName } from './my-element';
+import { MyElementName } from './my-elements';
 import { MyElementConfigDefaultMap, MyElementConfigProps } from './my-element-config';
 import { ContentConditionParams } from '../temp/condition';
 

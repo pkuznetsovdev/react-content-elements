@@ -1,4 +1,9 @@
-import { MyElementModifiers, MyElementName, MyElementSpecialProps, MyElementTag } from './my-element';
+export const MY_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME = {
+  text: 'string',
+  image: 'string',
+  link: 'string',
+} as Record<MyElementName, unknown>;
+import { MyElementModifiers, MyElementName, MyElementSpecialProps, MyElementTag } from './my-elements';
 import React, { HTMLProps } from 'react';
 import { ListProps } from 'src/core/templates/list/types';
 import { LinkProps } from 'src/core/templates/link/types';
@@ -11,8 +16,8 @@ type MyElementConfigBase<ElementName extends MyElementName> = Partial<{
 }>;
 
 interface MyElementCofigContentMap<
-  ElementName extends MyElementName,
-  ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
+    ElementName extends MyElementName,
+    ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
 > {
   text: React.PropsWithChildren<{
     text?: string | Array<string> | false | null | 0 | MyElementConfig<ElementName>;
@@ -30,10 +35,10 @@ interface MyElementCofigContentMap<
 type MyElementCofigContent<ElementName extends MyElementName> = MyElementCofigContentMap<ElementName>[ElementName];
 
 export type MyElementConfig<ElementName extends MyElementName> = HTMLProps<any> &
-  MyElementConfigBase<ElementName> &
-  MyElementCofigContent<ElementName> &
-  ContentConditionParams &
-  MyElementSpecialProps<ElementName>;
+    MyElementConfigBase<ElementName> &
+    MyElementCofigContent<ElementName> &
+    ContentConditionParams &
+    MyElementSpecialProps<ElementName>;
 
 export type MyElementConfigProps<ElementName extends MyElementName> = Omit<MyElementConfig<ElementName>, 'myname'>;
 

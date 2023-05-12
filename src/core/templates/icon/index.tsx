@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
+import { WithMyTemplateElementProps } from '../../content-element';
 
 export const Icon = ({ children, tag, name, ...props }: IconProps & WithMyTemplateElementProps) => {
   return null;
