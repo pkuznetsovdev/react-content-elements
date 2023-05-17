@@ -1,7 +1,7 @@
-/** START: MyElementProps */
+/** START: ContentElementProps */
 import React from 'react';
-import { MyElementName } from './my-elements';
-import { MyElementConfigDefaultMap, MyElementConfigProps } from './my-element-config';
+import { ContentElementName } from './content-elements';
+import { ContentElementConfigDefaultMap, ContentElementConfigProps } from './content-element-config';
 import { ContentConditionParams } from '../temp/condition';
 
 // TODO FAQ: How to make one of props required: config by default value, or config with required attr by name, or
@@ -12,9 +12,9 @@ import { ContentConditionParams } from '../temp/condition';
 //  | {children?: React.ReactNode; config: Config | DefaultConfig}
 // )
 
-export type MyElementProps<ElementName extends MyElementName> = ContentConditionParams &
-  MyElementConfigProps<ElementName> &
+export type ContentElementProps<ElementName extends ContentElementName> = ContentConditionParams &
+  ContentElementConfigProps<ElementName> &
   React.PropsWithChildren<{
-    config?: MyElementConfigProps<ElementName> | MyElementConfigDefaultMap[ElementName];
+    config?: ContentElementConfigProps<ElementName> | ContentElementConfigDefaultMap[ElementName];
   }>;
-/** END: MyElementProps */
+/** END: ContentElementProps */

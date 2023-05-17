@@ -1,31 +1,27 @@
-import React from 'react';
 import './core/styles/index.scss';
 
-import { getMyElementByNameRenderer } from './core';
+import { getContentElementByNameRenderer } from './core';
 
-const getMyElementByName = getMyElementByNameRenderer();
+const getContentElementByName = getContentElementByNameRenderer();
 
 const CE = {
-  Text: getMyElementByName('text'),
-  Image: getMyElementByName('image'),
-  Block: getMyElementByName('block'),
-  List: getMyElementByName('list'),
-  Link: getMyElementByName('link'),
-  Divider: getMyElementByName('divider'),
-  Button: getMyElementByName('button'),
-  Icon: getMyElementByName('icon'),
-  Custom: getMyElementByName('custom'),
+  Text: getContentElementByName('text'),
+  Image: getContentElementByName('image'),
+  Block: getContentElementByName('block'),
+  List: getContentElementByName('list'),
+  Link: getContentElementByName('link'),
+  Divider: getContentElementByName('divider'),
+  Button: getContentElementByName('button'),
+  Custom: getContentElementByName('custom'),
 };
 
 //export default CE;
 
-import * as utils from './utils';
-import * as shared from './core/shared';
+export * from './utils';
+export * from './core/shared';
 
 export { CE };
 
 export default {
   CE,
-  ...utils,
-  ...shared,
 };

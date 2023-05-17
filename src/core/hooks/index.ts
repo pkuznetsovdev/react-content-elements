@@ -1,3 +1,3 @@
 export * from './useBreakpoints';
-export * from './useContentConditions';
+export * from './useValidateByContentConditions';
 export * from './useImageSrcBySrcSet';

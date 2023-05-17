@@ -41,10 +41,6 @@ export const useImageSrcBySrcSet = (
       }
     }
 
-    if (srcBySrcSet) {
-      return srcBySrcSet;
-    }
-
     return srcBySrcSet;
   }, [breakpointName, srcSet]);
 
@@ -52,5 +48,7 @@ export const useImageSrcBySrcSet = (
     return isBg ? `url(${srcBySrcSet})` : srcBySrcSet;
   }
 
-  return isBg ? `url(${src})` : src;
+  if (src) {
+    return isBg ? `url(${src})` : src;
+  }
 };

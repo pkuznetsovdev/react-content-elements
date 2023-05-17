@@ -1,4 +1,4 @@
-@import '../utils';
+@use '../utils' as *;
 
 @include byModifier('with-disc') {
   margin: var(--disc-item-margin);

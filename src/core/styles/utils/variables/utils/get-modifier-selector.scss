@@ -1,6 +1,6 @@
 @use "sass:map";
-@import '../content-elements';
-@import '../breakpoints';
+@use '../content-elements' as *;
+@use '../breakpoints' as *;
 
 $over-bp: 'above';
 $under-bp: 'beyond';

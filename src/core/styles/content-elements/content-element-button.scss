@@ -1,4 +1,4 @@
-@import '../utils';
+@use '../utils' as *;
 
 @include byName('button') {
   //width: var(--button-width);

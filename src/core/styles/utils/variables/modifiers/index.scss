@@ -1,25 +1,25 @@
 /** structure */
-@import'page';
-@import'section';
+@forward'page';
+@forward'section';
 
-@import'container';
+@forward'container';
 
 /** list */
-@import'grid';
-@import'row';
-@import'disc';
+@forward'grid';
+@forward'row';
+@forward'disc';
 
 /** text */
-@import'subheader';
-@import'header';
+@forward'subheader';
+@forward'header';
 
-@import'subtitle';
-@import'title';
-@import'section-title';
-@import'page-title';
+@forward'subtitle';
+@forward'title';
+@forward'section-title';
+@forward'page-title';
 
-@import'center';
-@import'accent';
+@forward'center';
+@forward'accent';
 
-@import'italic';
+@forward'italic';
 

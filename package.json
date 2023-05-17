@@ -1,6 +1,6 @@
 {
   "name": "react-content-elements",
-  "version": "1.1.108-webpack-umd-1.0.1",
+  "version": "1.1.108-rollup-7",
   "private": false,
   "main": "dist/index.cjs.js",
   "type": "module",
@@ -25,15 +25,10 @@
     "url": "git+https://github.com/pkuznetsovdev/rce.git"
   },
   "scripts": {
-    "build:webpack": "webpack",
-    "build:rollup": "rollup -c --bundleConfigAsCjs",
-    "publish": "npm publish",
-    "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build": "rollup -c --bundleConfigAsCjs",
     "lint": "eslint --fix \"{src/**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,example}/**/*.{js,ts,jsx,tsx}\"",
-    "prepare": "npm run build:webpack",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run prettier && npm run lint"
   },
   "peerDependencies": {

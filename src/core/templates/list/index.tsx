@@ -1,18 +1,18 @@
 import React from 'react';
 import { ListItemProps, ListProps } from './types';
-import type { WithMyTemplateElementProps } from '../../content-element';
+import type { WithContentTemplateElementProps } from '../../content-element';
 import { BASE_CLASSNAME } from '../../content-element/base-classname';
 import { SHARED_UTILS } from '../../../utils';
 
 export const List = ({
   children,
   tag: TagName,
-  myElementKey,
+  contentElementKey,
   content,
   listItemTemplate: ItemTemplate,
   ...props
-}: WithMyTemplateElementProps & ListProps) => {
-  const elementKeyByListProps = myElementKey || 'id';
+}: WithContentTemplateElementProps & ListProps) => {
+  const elementKeyByListProps = contentElementKey || 'id';
 
   if (content && typeof content[0] === 'string' && !ItemTemplate) {
     return (

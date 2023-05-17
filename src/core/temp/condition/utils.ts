@@ -179,7 +179,7 @@ function getConditionResultBySchedule(schedule: ContentConditionScheduleRule) {
   return isStarted;
 }
 
-export const getContentConditions = (
+export const validateByContentConditions = (
   contentConditions: ContentConditions | undefined,
   { shouldSatisfyEveryCondition }: ContentConditionBaseParams,
 ) => {

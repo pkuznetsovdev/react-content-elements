@@ -25,7 +25,7 @@ export default {
         }
     ],
     plugins: [
-        // peerDepsExternal(),
+        peerDepsExternal(),
         babel({
             babelHelpers: 'bundled',
             exclude: 'node_modules/**',
@@ -34,7 +34,7 @@ export default {
         resolve(),
         commonjs(),
         typescript(),
-        scss({ fileName: "main.css", outputStyle: 'compressed'}),
+        scss({ fileName: "styles/main.css", outputStyle: 'compressed'}),
         copy({ targets: [
                 {
                     src: ['src/core/styles/utils'],
@@ -42,9 +42,4 @@ export default {
                 }
             ] }),
     ],
-    external: Object.keys({
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router-dom": "^6.8.2"
-      }),
 }

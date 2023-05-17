@@ -1,6 +1,7 @@
-@import "utils";
+@use './utils' as *;
 
 body {
+  color: var(--text-color);
   background-color: var(--body-background);
   transition: .3s background-color ease-in;
 }

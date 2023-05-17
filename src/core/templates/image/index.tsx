@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageProps } from './types';
-import { WithMyTemplateElementProps } from '../../content-element';
+import { WithContentTemplateElementProps } from '../../content-element';
 import { useImageSrcBySrcSet } from '../../hooks';
 
 export const Image = ({
@@ -12,7 +12,7 @@ export const Image = ({
   srcSet,
   src,
   ...props
-}: React.PropsWithChildren<ImageProps & WithMyTemplateElementProps>) => {
+}: React.PropsWithChildren<ImageProps & WithContentTemplateElementProps>) => {
   const srcBySrcSet = useImageSrcBySrcSet(srcSet, { src });
 
   return <img {...props} src={srcBySrcSet} />;

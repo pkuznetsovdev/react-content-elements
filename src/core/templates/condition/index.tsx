@@ -3,7 +3,7 @@ import {
   ContentConditions,
   processContentConditionByGroups,
   processContentConditionBySchedule,
-  getContentConditions,
+  validateByContentConditions,
 } from 'src/core/temp/condition';
 import { ConditionProps } from './types';
 
@@ -19,7 +19,7 @@ const ContentElementCondition = ({
       (
         React.Children.map(children, (item) => {
           if (
-            getContentConditions(item?.props.contentConditions, {
+            validateByContentConditions(item?.props.contentConditions, {
               shouldSatisfyEveryCondition: item?.props.satisfyEveryCondition || satisfyEveryCondition,
             })
           ) {

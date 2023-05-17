@@ -1,5 +1,5 @@
-@import'breakpoints';
-@import'content-elements';
-@import'modifiers';
-@import'utils';
-@import'globals';
+@forward'breakpoints';
+@forward'content-elements';
+@forward'modifiers';
+@forward'utils';
+@forward'globals';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DividerProps } from './types';
-import { WithMyTemplateElementProps } from '../../content-element';
+import { WithContentTemplateElementProps } from '../../content-element';
 
-export const Divider = ({ className }: DividerProps & WithMyTemplateElementProps) => {
+export const Divider = ({ className }: DividerProps & WithContentTemplateElementProps) => {
   return <hr className={className} />;
 };

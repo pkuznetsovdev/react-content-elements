@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlockProps } from './types';
-import { WithMyTemplateElementProps } from '../../content-element';
+import { WithContentTemplateElementProps } from '../../content-element';
 import { useImageSrcBySrcSet } from '../../hooks';
 
 export const Block = ({
@@ -10,17 +10,17 @@ export const Block = ({
   bgSrc,
   content,
   ...props
-}: BlockProps & WithMyTemplateElementProps) => {
-  const backgroundImageUrl = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true });
+}: BlockProps & WithContentTemplateElementProps) => {
+  const backgroundImage = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true });
 
   const style = {
-    ...(backgroundImageUrl ? { backgroundImage: backgroundImageUrl } : {}),
+    ...(backgroundImage ? { backgroundImage } : {}),
   };
 
   return (
     // TODO: FIX TS contentElementTag type
     // @ts-ignore-next-line
-    <TagName {...props} style={{ ...style, ...(props.style ? props.style : {}) }}>
+    <TagName {...props} style={{ ...(props.style ? props.style : {}), ...style }}>
       {children}
     </TagName>
   );

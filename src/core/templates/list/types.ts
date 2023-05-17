@@ -4,7 +4,7 @@ import React from 'react';
 // @ts-ignore
 export interface ListProps<ItemProps = Record<string, never>>
   extends React.HTMLProps<HTMLOListElement | HTMLUListElement | HTMLDListElement> {
-  myElementKey?: string;
+  contentElementKey?: string;
   content?: ItemProps[];
   listItemTemplate?: React.FC<React.PropsWithChildren<ItemProps>>;
 }
