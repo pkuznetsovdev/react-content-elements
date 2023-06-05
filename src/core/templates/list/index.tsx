@@ -115,3 +115,6 @@ export const ListItem = ({ children, ...props }: ListItemProps) => {
     </li>
   );
 };
+
+List.displayName = 'CE.List';
+ListItem.displayName = 'CE.ListItem';

@@ -23,3 +23,5 @@ export const Button = ({
     </button>
   );
 };
+
+Button.displayName = 'CE.Button';

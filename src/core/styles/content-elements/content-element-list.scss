@@ -2,6 +2,7 @@
 
 @include byName('list') {
   width: var(--list-width);
+  max-width: var(--list-max-width);
 
   display: var(--list-display);
   flex-direction: var(--list-flex-direction);
@@ -9,15 +10,16 @@
 
   list-style-type: var(--list-style-type);
 
-
-  & + & {
-    //margin-top: var(--text-font-size);
+  @include childByName('item') {
+    font-size: var(--text-font-size);
+    display: flex;
+    flex-direction: column;
   }
 }
 
 @include byModifier('list-title') {
   @include nextByName('list') {
-    margin-top: .4em;
+    margin-top: .5em;
   }
 }
 

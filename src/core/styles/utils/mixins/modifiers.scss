@@ -14,7 +14,7 @@
 
     &-beyond {
       &-#{$breakpoint-name} {
-        @media (max-width: calc($breakpoint-value - 1px)) {
+        @media (max-width: calc($breakpoint-value - 0.001px)) {
           @content;
         }
       }
@@ -22,24 +22,9 @@
   }
 }
 
-@mixin withSelectorsByModifier($modifier: string) {
-  @if ($modifier == 'caption') {
-    //  f.e.:
-    & {
-      //  & > #{$name-icon},
-      //  & > #{$name-text} {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
 @mixin useModifier($modifier: string) {
-  @include withSelectorsByModifier($modifier) {
-    @include withAboveAndBeyond {
-      @content;
-    }
+  @include withAboveAndBeyond {
+    @content;
   }
 }
 

@@ -25,3 +25,5 @@ export const Block = ({
     </TagName>
   );
 };
+
+Block.displayName = 'CE.Block';

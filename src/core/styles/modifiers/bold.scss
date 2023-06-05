@@ -1,0 +1,13 @@
+@use '../utils' as *;
+
+@mixin bold {
+  font-weight: var(--font-weight-bold);
+}
+
+@include byModifier('b') {
+  @include bold;
+}
+
+@include byModifier('bold') {
+  @include bold;
+}

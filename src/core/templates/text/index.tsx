@@ -17,3 +17,5 @@ export const Text = ({ children, tag: TagName, content, ...props }: TextProps & 
     <TagName {...props}>{children}</TagName>
   );
 };
+
+Text.displayName = 'CE.Text';

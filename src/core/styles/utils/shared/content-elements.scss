@@ -1,0 +1,6 @@
+@use "breakpoints";
+
+$ce-base-name: '.ce';
+
+$container-content-width: 100%;
+$container-content-max-width: calc(#{breakpoints.$screen-lg} + 60px);

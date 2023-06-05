@@ -1,10 +1,5 @@
 import React, { useMemo } from 'react';
-import {
-  ContentConditions,
-  processContentConditionByGroups,
-  processContentConditionBySchedule,
-  validateByContentConditions,
-} from 'src/core/temp/condition';
+import { validateByContentConditions } from 'src/core/temp/condition';
 import { ConditionProps } from './types';
 
 const ContentElementCondition = ({
@@ -43,3 +38,5 @@ const ContentElementCondition = ({
 };
 
 export default ContentElementCondition;
+
+ContentElementCondition.displayName = 'CE.ContentElementCondition';

@@ -1,3 +1,5 @@
+@use "breakpoints/index" as *;
+
 $font-sizes: (
         xs: 11px,
         sm: 14px,
@@ -6,4 +8,6 @@ $font-sizes: (
         lg: 22px,
         xl: 30px,
         xxl: 40px,
-)
+);
+
+$sizes: map-keys($breakpoints);

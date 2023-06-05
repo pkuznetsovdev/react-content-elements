@@ -17,3 +17,5 @@ export const Image = ({
 
   return <img {...props} src={srcBySrcSet} />;
 };
+
+Image.displayName = 'CE.Image';
