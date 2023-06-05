@@ -2,7 +2,7 @@
 
 @include byModifier('container') {
   width: var(--container-width);
-  max-width: var($container-content-max-width);
+  max-width: var(--container-content-max-width);
   margin-left: var(--container-margin-left);
   margin-right: var(--container-margin-right);
 

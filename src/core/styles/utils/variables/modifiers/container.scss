@@ -1,17 +1,17 @@
-@use "../../shared/content-elements" as vars;
+@use "../../shared" as vars;
 
 :root {
   /**
    * User input values.
    */
-  --container-content-width: #{vars.$container-content-width};
+  --container-content-width: 100%;
   --container-align: center;
   --container-margin-top: 0;
   --container-margin-right: auto;
   --container-margin-bottom: 0;
   --container-margin-left: auto;
 
-  --container-content-max-width: #{vars.$container-content-max-width};
+  --container-content-max-width: calc(#{vars.$screen-lg} + 60px);
 
   --container-padding: 20px;
   --container-padding--sm: 48px;

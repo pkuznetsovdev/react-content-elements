@@ -70,7 +70,7 @@ function getIsContentInProps<ElementName extends ContentElementName>(
     case 'link':
       // TODO FAQ: How to fix ts
       // @ts-ignore
-      return Boolean(props.config?.to || props.to);
+      return Boolean(props.config?.href || props.href);
     case 'list':
       // TODO FAQ: How to fix ts
       // @ts-ignore
