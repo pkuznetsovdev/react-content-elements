@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../shared' as *;
 
 @mixin byName($ce-name: '') {
   @if ($ce-name == '') {

@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@use '../shared' as *;
 
 @include byModifier('section-title') {
   margin: var(--section-title-margin);

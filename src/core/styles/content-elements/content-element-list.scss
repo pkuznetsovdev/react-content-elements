@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@use '../shared' as *;
 
 @include byName('list') {
   width: var(--list-width);

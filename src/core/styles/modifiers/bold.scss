@@ -1,4 +1,4 @@
-@use '../utils' as *;
+@use '../shared' as *;
 
 @mixin bold {
   font-weight: var(--font-weight-bold);
