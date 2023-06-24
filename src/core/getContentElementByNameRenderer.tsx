@@ -90,13 +90,13 @@ function getContentElementConfig<ElementName extends ContentElementName>(
 function mergeModifiersInConfig<ElementName extends ContentElementName>(
   props: ContentElementProps<ElementName>,
   customProps: Partial<ContentElementProps<ElementName>> = {},
-) {
+): string[] {
   return [
     // TODO FAQ: How to fix ts
     // @ts-ignore
     ...(props.config?.modifiers || props.modifiers || []),
     ...(customProps.modifiers || []),
-  ];
+  ].filter(m => m && typeof m === "string");
 }
 
 function getConfigByDefaultValue<ElementName extends ContentElementName>(

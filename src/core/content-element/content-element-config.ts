@@ -22,6 +22,11 @@ type ContentElementConfigBase<ElementName extends ContentElementName> = Partial<
   modifiers: ContentElementModifiers<ElementName>;
 }>;
 
+type ContentElementConfigBaseProps<ElementName extends ContentElementName> = Partial<{
+  tag: ContentElementTag<ElementName>;
+  modifiers: ContentElementModifiers<ElementName> | unknown[];
+}>;
+
 interface ContentElementCofigContentMap<
   ElementName extends ContentElementName,
   ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
@@ -54,7 +59,7 @@ export type ContentElementConfig<ElementName extends ContentElementName> = HTMLP
 export type ContentElementConfigProps<ElementName extends ContentElementName> = Omit<
   ContentElementConfig<ElementName>,
   'contentElementName'
->;
+> & ContentElementConfigBaseProps<ElementName>;
 
 export interface ContentElementConfigDefaultMap extends Partial<Record<ContentElementName, unknown>> {
   text?: string;
