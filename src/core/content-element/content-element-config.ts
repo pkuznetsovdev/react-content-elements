@@ -58,8 +58,9 @@ export type ContentElementConfig<ElementName extends ContentElementName> = HTMLP
 
 export type ContentElementConfigProps<ElementName extends ContentElementName> = Omit<
   ContentElementConfig<ElementName>,
-  'contentElementName'
-> & ContentElementConfigBaseProps<ElementName>;
+  'contentElementName' | 'modifiers' | 'tag'
+> &
+  ContentElementConfigBaseProps<ElementName>;
 
 export interface ContentElementConfigDefaultMap extends Partial<Record<ContentElementName, unknown>> {
   text?: string;

@@ -96,7 +96,7 @@ function mergeModifiersInConfig<ElementName extends ContentElementName>(
     // @ts-ignore
     ...(props.config?.modifiers || props.modifiers || []),
     ...(customProps.modifiers || []),
-  ].filter(m => m && typeof m === "string");
+  ].filter((m) => m && typeof m === 'string');
 }
 
 function getConfigByDefaultValue<ElementName extends ContentElementName>(
