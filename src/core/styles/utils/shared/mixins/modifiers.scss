@@ -15,7 +15,7 @@
 
     &-beyond {
       &-#{$breakpoint-name} {
-        @media (max-width: calc($breakpoint-value - 0.001px)) {
+        @media (max-width: $breakpoint-value - 0.001px) {
           @content;
         }
       }

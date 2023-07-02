@@ -11,7 +11,7 @@
   --container-margin-bottom: 0;
   --container-margin-left: auto;
 
-  --container-content-max-width: calc(#{vars.$screen-lg} + 60px);
+  --container-content-max-width: vars.$screen-lg + 60px;
 
   --container-padding: 20px;
   --container-padding--sm: 48px;
