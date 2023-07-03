@@ -6,5 +6,4 @@ export const CONTENT_ELEMENT_NAMES = [
   'divider',
   'block',
   'list',
-  'condition',
 ] as const;
