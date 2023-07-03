@@ -22,9 +22,7 @@ export function getContentElementTemplatePropsByConfig<
   } as unknown as ContentElementTemplateProps<ElementName>;
 }
 
-function getClassNameByModifier<ElementName extends ContentElementName>(
-  modifier: ContentElementModifiers<ElementName>[number],
-) {
+function getClassNameByModifier<ElementName extends ContentElementName>(modifier: ContentElementModifiers[number]) {
   return `${BASE_CLASSNAME}--${modifier}`;
 }
 

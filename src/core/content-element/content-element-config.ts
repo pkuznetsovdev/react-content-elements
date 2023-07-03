@@ -17,13 +17,13 @@ import { CustomProps } from '../templates/custom/types';
 
 /** START: ContentElementConfig */
 type ContentElementConfigBase<ElementName extends ContentElementName> = Partial<{
-  tag: ContentElementTag<ElementName>;
-  modifiers: ContentElementModifiers<ElementName>;
+  tag: ContentElementTag;
+  modifiers: ContentElementModifiers;
 }>;
 
 type ContentElementConfigBaseProps<ElementName extends ContentElementName> = Partial<{
-  tag: ContentElementTag<ElementName>;
-  modifiers: ContentElementModifiers<ElementName> | unknown[];
+  tag: ContentElementTag;
+  modifiers: ContentElementModifiers | unknown[];
 }>;
 
 interface ContentElementCofigContentMap<

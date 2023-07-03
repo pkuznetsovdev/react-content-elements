@@ -1,5 +1,4 @@
 @use '../variables' as *;
-@use 'src/content-elements/styles/variables' as *;
 
 @mixin withAboveAndBeyond {
   @content;
