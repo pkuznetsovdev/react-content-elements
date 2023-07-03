@@ -2,7 +2,6 @@
 import React from 'react';
 import { ContentElementName } from './content-elements';
 import { ContentElementConfigDefaultMap, ContentElementConfigProps } from './content-element-config';
-import { ContentConditionParams } from '../temp/condition';
 
 // TODO FAQ: How to make one of props required: config by default value, or config with required attr by name, or
 // children?
@@ -12,8 +11,7 @@ import { ContentConditionParams } from '../temp/condition';
 //  | {children?: React.ReactNode; config: Config | DefaultConfig}
 // )
 
-export type ContentElementProps<ElementName extends ContentElementName> = ContentConditionParams &
-  ContentElementConfigProps<ElementName> &
+export type ContentElementProps<ElementName extends ContentElementName> = ContentElementConfigProps<ElementName> &
   React.PropsWithChildren<{
     config?: ContentElementConfigProps<ElementName> | ContentElementConfigDefaultMap[ElementName];
   }>;

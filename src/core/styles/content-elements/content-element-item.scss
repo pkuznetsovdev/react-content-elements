@@ -1,9 +1,0 @@
-@use '../shared' as *;
-
-@include byName('item') {
-  margin: var(--item-margin);
-
-  & + & {
-    margin: var(--item-margin);
-  }
-}

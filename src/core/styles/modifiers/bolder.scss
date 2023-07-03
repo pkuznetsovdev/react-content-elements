@@ -1,5 +1,0 @@
-@use '../shared' as *;
-
-@include byModifier('bold') {
-  font-weight: var(--font-weight-bolder);
-}

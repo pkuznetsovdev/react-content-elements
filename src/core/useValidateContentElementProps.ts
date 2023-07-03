@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContentElementName, ContentElementProps } from './content-element';
-import { useValidateByContentConditions } from './hooks/useValidateByContentConditions';
 import { validateUnreachableCode } from './utils';
 import { CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME } from './content-element';
 
@@ -10,16 +9,16 @@ export function useValidateContentElementProps<ElementName extends ContentElemen
   contentElementName: ElementName,
 ) {
   /** Case 1. Filter by WCE condition */
-  const isElementValidByCondition = useValidateByContentConditions(props.contentConditions, {
-    shouldSatisfyEveryCondition: props.shouldSatisfyEveryCondition,
-  });
+  // const isElementValidByCondition = useValidateByContentConditions(props.contentConditions, {
+  //   shouldSatisfyEveryCondition: props.shouldSatisfyEveryCondition,
+  // });
 
-  if (!isElementValidByCondition) {
-    /**  IDEAS
-     * here we can track all invalid by content condition elements, f.e. Record<ElementName,
-     * ContentElementProps<ElementName>['contentConditions']> */
-    return false;
-  }
+  // if (!isElementValidByCondition) {
+  //   /**  IDEAS
+  //    * here we can track all invalid by content condition elements, f.e. Record<ElementName,
+  //    * ContentElementProps<ElementName>['contentConditions']> */
+  //   return false;
+  // }
 
   /** Case 2. Filter by 'is minimum required content' or children in props or else... */
   const isContentInProps = getIsContentInProps(props, contentElementName);

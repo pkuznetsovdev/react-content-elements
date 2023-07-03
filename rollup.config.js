@@ -37,8 +37,8 @@ export default {
         scss({ fileName: "styles/main.css", outputStyle: 'compressed'}),
         copy({ targets: [
                 {
-                    src: ['src/core/styles/utils'],
-                    dest: 'dist/styles'
+                    src: ['src/core/styles'],
+                    dest: 'dist'
                 }
             ] }),
     ],

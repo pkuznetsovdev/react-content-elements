@@ -1,0 +1,46 @@
+@use '../variables' as *;
+@use 'src/content-elements/styles/variables' as *;
+
+@mixin withAboveAndBeyond {
+  @content;
+
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+    &-above {
+      &-#{$breakpoint-name} {
+        @media (min-width: $breakpoint-value) {
+          @content;
+        }
+      }
+    }
+
+    &-beyond {
+      &-#{$breakpoint-name} {
+        @media (max-width: $breakpoint-value - 0.001px) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin useModifier($modifier: string) {
+  @include withAboveAndBeyond {
+    @content;
+  }
+}
+
+@mixin withModifier($modifier: string) {
+  &#{$ce-base-name}--#{$modifier} {
+    @include useModifier($modifier) {
+      @content;
+    }
+  }
+}
+
+@mixin byModifier($modifier: string) {
+  #{$ce-base-name}--#{$modifier} {
+    @include useModifier($modifier) {
+      @content;
+    }
+  }
+}

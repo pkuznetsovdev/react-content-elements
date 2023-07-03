@@ -10,9 +10,9 @@ export function getContentElementTemplatePropsByConfig<
 
   const contentElementTag = getContentElementTag(config);
 
-  const { modifiers, contentElementName, contentConditions, ...nativeProps } = config;
+  const { modifiers, contentElementName, ...nativeProps } = config;
 
-  const customProps = contentElementName === 'custom' ? { modifiers, contentElementName, contentConditions } : {};
+  const customProps = contentElementName === 'custom' ? { modifiers, contentElementName } : {};
 
   return {
     ...nativeProps,

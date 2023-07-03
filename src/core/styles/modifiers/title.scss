@@ -1,9 +1,0 @@
-@use '../shared' as *;
-
-@include byModifier('title') {
-  font-size: var(--title-font-size);
-
-  @include nextByName('text') {
-    margin-top: .5em;
-  }
-}

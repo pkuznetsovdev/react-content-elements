@@ -1,8 +1,0 @@
-@use '../shared' as *;
-
-@include byModifier('page') {
-  width: var(--page-width);
-  display: var(--page-display);
-  height: var(--page-height);
-  min-height: var(--page-min-height);
-}

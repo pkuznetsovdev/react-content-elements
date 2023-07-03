@@ -1,9 +1,0 @@
-@use '../shared' as *;
-
-@include byModifier('accent') {
-  color: red;
-}
-// css
-//.ce--accent {
-//  color: red;
-//}

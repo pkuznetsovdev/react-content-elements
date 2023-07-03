@@ -1,5 +1,3 @@
-import './core/styles/index.scss';
-
 import { getContentElementByNameRenderer } from './core';
 
 const getContentElementByName = getContentElementByNameRenderer();

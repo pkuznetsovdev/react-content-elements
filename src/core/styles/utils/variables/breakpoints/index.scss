@@ -1,7 +1,0 @@
-@use '../../shared/breakpoints';
-
-:root {
-  @each $key, $value in breakpoints {
-    --screen-#{$key}: #{$value};
-  }
-}

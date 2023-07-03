@@ -1,5 +1,2 @@
-@forward 'utils';
-@forward './globals.scss';
-@forward 'content-elements';
-@forward 'modifiers';
-@forward 'themes';
+@forward "variables";
+@forward "mixins";

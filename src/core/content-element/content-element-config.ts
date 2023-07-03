@@ -14,7 +14,6 @@ import { ListProps } from '../templates/list/types';
 import { LinkProps } from '../templates/link/types';
 import { ButtonProps } from '../templates/button/types';
 import { CustomProps } from '../templates/custom/types';
-import { ContentConditionParams } from '../temp/condition';
 
 /** START: ContentElementConfig */
 type ContentElementConfigBase<ElementName extends ContentElementName> = Partial<{
@@ -53,7 +52,6 @@ type ContentElementCofigContent<ElementName extends ContentElementName> =
 export type ContentElementConfig<ElementName extends ContentElementName> = HTMLProps<any> &
   ContentElementConfigBase<ElementName> &
   ContentElementCofigContent<ElementName> &
-  ContentConditionParams &
   ContentElementSpecialProps<ElementName>;
 
 export type ContentElementConfigProps<ElementName extends ContentElementName> = Omit<

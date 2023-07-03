@@ -1,4 +1,4 @@
-@use '../content-elements' as *;
+@use '../variables' as *;
 
 @mixin nextByName($ce-name: '') {
   @if ($ce-name == '') {
