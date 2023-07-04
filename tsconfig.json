@@ -1,38 +1,17 @@
 {
-  "include": ["src/**/*"],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ],
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "lib": ["ES2018", "dom"],
-    "importHelpers": false,
-    "declaration": true,
-    "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "./dist/types",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["dom", "es2015", "es2017"],
+    "jsx": "react-jsx",
     "strict": true,
-    "moduleResolution": "node",
-    "jsx": "react",
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "noEmitOnError": false,
-    "noEmit": false,
-    "skipDefaultLibCheck": false,
-    "allowUnreachableCode": true,
-    "exactOptionalPropertyTypes": false ,
-    "noFallthroughCasesInSwitch": false,
-    "noImplicitThis": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitAny": false,
-    "allowJs": true,
-    "isolatedModules": true
-  }
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
