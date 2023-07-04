@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: './src/index.ts',
@@ -29,6 +30,13 @@ module.exports = {
     },
     externals: {
         'react': 'react',
-        'react-dom' : 'reactDOM',
+        'react-dom': 'reactDOM',
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {from: "src/core/styles", to: "styles"},
+            ],
+        }),
+    ],
 };
