@@ -1,6 +1,0 @@
-@import '../utils';
-
-@include byModifier('with-disc') {
-  margin: var(--disc-item-margin);
-  display: list-item;
-}

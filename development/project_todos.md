@@ -10,8 +10,9 @@ F.E.
 Generated html
 ```tsx
 
-<ContentElement.Text tag="span" modifiers={['accent']}>Hello, World!</ContentElement.Text>
+<ContentElement.Text modifiers={['accent']}>Hello, World!</ContentElement.Text>
 // <span class="content-element content-text content-element--accent">Hello, World!</span>
+// not  <p class="content-element content-text content-element--accent">Hello, World!</p>
 ```
 
 Generated css
@@ -23,8 +24,22 @@ Generated css
 }
 ```
 
-##### Generate layout automatically from Figma design 
-1. use ID's for the components, go through the node tree in Figma
+##### MODIFIERS BY CONFIG
+- Extend or replace?
+```tsx
+<ContentElement.Text modifiers={['accent']} config={{ modifiers: ['secondary'] }}>Hello, World!</ContentElement.Text>
+// <p class="content-element content-text content-element--secondary">Hello, World!</p>
+// or
+// <p class="content-element content-text content-element--accent content-element--secondary">Hello, World!</p>
+```
+
+##### ADD MODIFIERS
+- 'hide'
+- size: 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'
+
+
+##### Generate layout automatically from Figma design
+1. use ID's for the FigmaElement-Component link, go through the node tree in Figma
 2. build a content component tree with 5 nodes depth, mark the nodes with nested elements
 3. if nodes with nested element - go to step 2, else go to next step
 4. generate content components by content component tree

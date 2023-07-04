@@ -1,9 +1,0 @@
-@import '../utils';
-
-@include byModifier('disc') {
-  list-style-type: var(--disc-list-style-type);
-
-  @include byName('item') {
-    margin: var(--disc-item-margin);
-  }
-}

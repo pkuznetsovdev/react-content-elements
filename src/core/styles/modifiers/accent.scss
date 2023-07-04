@@ -1,5 +1,0 @@
-@import '../utils';
-
-@include byModifier('accent') {
-  color: var(--ce-accent-color);
-}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ImageSrcSetProp } from '../../utils';
+import { ImageSrcSet } from '../../types';
 
 export type ImageProps = React.HTMLProps<HTMLImageElement> & {
-  srcSet?: ImageSrcSetProp;
+  srcSet?: ImageSrcSet;
 };

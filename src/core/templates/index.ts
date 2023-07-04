@@ -6,4 +6,3 @@ export * from './link';
 export * from './divider';
 export * from './button';
 export * from './custom';
-export * from './icon';

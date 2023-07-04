@@ -1,11 +1,12 @@
 import React from 'react';
 import { LinkProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
-import { NavLink } from 'react-router-dom';
+import { WithContentTemplateElementProps } from '../../content-element';
 
-export const Link = ({ children, tag, ...props }: WithMyTemplateElementProps & LinkProps) => {
-  const { ...navLinkProps } = props;
+export const Link = ({ children, tag, ...props }: WithContentTemplateElementProps & LinkProps) => {
+  const { ...linkProps } = props;
   // TODO FAQ: How to fix ts
   // @ts-ignore
-  return <NavLink {...navLinkProps}>{navLinkProps.title || children}</NavLink>;
+  return <a {...linkProps}>{linkProps.title || children}</a>;
 };
+
+Link.displayName = 'CE.Link';

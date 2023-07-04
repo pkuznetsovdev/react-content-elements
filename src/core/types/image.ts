@@ -1,3 +1,4 @@
-import { BreakpointName, BREAKPOINTS_BY_NAME } from '../constants/breakpoints';
+import { BreakpointName } from '../constants';
 
-export type ImageSrcSet = Record<BreakpointName, (typeof BREAKPOINTS_BY_NAME)[BreakpointName]['from']>;
+type ImageSrc = string;
+export type ImageSrcSet = Partial<Record<BreakpointName, ImageSrc>>;

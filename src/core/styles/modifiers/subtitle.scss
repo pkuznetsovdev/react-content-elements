@@ -1,7 +1,0 @@
-@import '../utils';
-
-@include byModifier('subtitle') {
-  @include nextByName('text') {
-    margin-top: .5em;
-  }
-}

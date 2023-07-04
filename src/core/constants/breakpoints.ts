@@ -26,11 +26,6 @@ export const BREAKPOINTS_BY_NAME = {
 } as const;
 
 /** shared export start */
-export function useBreakpoints() {
-  const currentBreakpointName = useGetCurrentBreakpointName();
-
-  return [currentBreakpointName, { BREAKPOINTS_BY_NAME, BREAKPOINT_NAMES }] as const;
-}
 
 export type BreakpointName = keyof typeof BREAKPOINTS_BY_NAME;
 /** shared export end */
@@ -38,21 +33,3 @@ export type BreakpointName = keyof typeof BREAKPOINTS_BY_NAME;
 export const BREAKPOINT_NAMES = Object.keys(BREAKPOINTS_BY_NAME).map(
   (breakpointName) => breakpointName,
 ) as Array<BreakpointName>;
-
-function useGetCurrentBreakpointName() {
-  let currentBreakpoint = null;
-  const currentScreenWidth = window.innerWidth;
-
-  for (const bpName in BREAKPOINTS_BY_NAME) {
-    const breakpointName = bpName as BreakpointName; // ts type fix
-    const breakpoint = BREAKPOINTS_BY_NAME[breakpointName];
-
-    if (breakpoint.from <= currentScreenWidth && breakpoint.to >= currentScreenWidth) {
-      // @ts-ignore
-      currentBreakpoint = breakpointName;
-      break;
-    }
-  }
-
-  return currentBreakpoint;
-}

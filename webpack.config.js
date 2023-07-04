@@ -1,100 +1,34 @@
-const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const PATHS = {
-    ENTRY: './src/index.ts',
-    ENTRY_STYLES: './src/core/styles/index.scss',
-    OUTPUT: './dist',
-}
-
-const WEBPACK = {
-    outputFileName: 'bundle.js',
-}
+const path = require('path');
 
 module.exports = {
-    entry: [PATHS.ENTRY, PATHS.ENTRY_STYLES],
+    entry: './src/index.ts',
     mode: 'production',
-    target: 'web',
     output: {
-        publicPath: "/dist",
-        path: path.resolve(__dirname, PATHS.OUTPUT),
-        filename: WEBPACK.outputFileName,
-        clean: true,
-        library: 'CE',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'index.js',
         libraryTarget: 'umd',
-    },
-    resolve: {
-        extensions: [ '.tsx', '.ts', '.jsx', '.js', '.scss' ],
-    },
-    optimization: {
-        minimize: false,
-        usedExports: false,
+        globalObject: 'this',
     },
     module: {
         rules: [
+            // `js` and `jsx` files are parsed using `babel`
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ["babel-loader"],
+            },
+            // `ts` and `tsx` files are parsed using `ts-loader`
             {
                 test: /\.(ts|tsx)$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.css$/i,
-                exclude: /node_modules/,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    'style-loader',
-                    // Translates CSS into CommonJS
-                    'css-loader',
-                ],
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
-                    // Translates CSS into CommonJS
-                    'css-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-                ],
-            },
-            {
-                test: /\.(jpe?g|png|svg|ttf)$/i,
-                type: 'asset/resource',
-            },
+                loader: "ts-loader"
+            }
         ],
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
-        new CopyPlugin({
-            patterns: [
-                // { from: './README.md' },
-                // { from: './package.json' },
-                {
-                    from: '**/*',
-                    context: path.resolve(__dirname, 'src', 'core/styles/utils'),
-                    to: 'styles',
-                },
-            ],
-        }),
-    ],
-    externals: {
-        react: {
-            commonjs: "react",
-            commonjs2: "react",
-            amd: "React",
-            root: "React"
-        },
-        "react-dom": {
-            commonjs: "react-dom",
-            commonjs2: "react-dom",
-            amd: "ReactDOM",
-            root: "ReactDOM"
-        }
+    resolve: {
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
     },
-}
+    externals: {
+        'react': 'react',
+        'react-dom' : 'reactDOM',
+    },
+};

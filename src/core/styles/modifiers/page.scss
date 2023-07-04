@@ -1,7 +1,0 @@
-@import '../utils';
-
-@include byModifier('page') {
-  width: var(--page-width);
-  display: var(--page-display);
-  height: 100%;
-}

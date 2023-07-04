@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
+import { WithContentTemplateElementProps } from '../../content-element';
 
-export const Text = ({ children, tag: TagName, content, ...props }: TextProps & WithMyTemplateElementProps) => {
+export const Text = ({ children, tag: TagName, content, ...props }: TextProps & WithContentTemplateElementProps) => {
   if (content && typeof content === 'string') {
     return (
       // TODO: FIX TS className type
@@ -17,3 +17,5 @@ export const Text = ({ children, tag: TagName, content, ...props }: TextProps & 
     <TagName {...props}>{children}</TagName>
   );
 };
+
+Text.displayName = 'CE.Text';

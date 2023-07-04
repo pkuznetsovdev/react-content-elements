@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
-import { getNativeSrcSet } from '../../utils';
+import { WithContentTemplateElementProps } from '../../content-element';
+import { useImageSrcBySrcSet } from '../../hooks';
 
 export const Image = ({
   children,
@@ -10,13 +10,12 @@ export const Image = ({
   // @ts-ignore
   text,
   srcSet,
+  src,
   ...props
-}: React.PropsWithChildren<ImageProps & WithMyTemplateElementProps>) => {
-  const { nativeSrcSet, sizes } = getImageNativePropsBySrcSet(srcSet);
+}: React.PropsWithChildren<ImageProps & WithContentTemplateElementProps>) => {
+  const srcBySrcSet = useImageSrcBySrcSet(srcSet, { src });
 
-  return <img {...props} srcSet={nativeSrcSet} sizes={sizes} />;
+  return <img {...props} src={srcBySrcSet} />;
 };
 
-function getImageNativePropsBySrcSet(srcSet: ImageProps['srcSet']) {
-  return srcSet ? getNativeSrcSet(srcSet) : { nativeSrcSet: undefined, sizes: undefined };
-}
+Image.displayName = 'CE.Image';

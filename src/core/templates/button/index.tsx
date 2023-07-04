@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonProps } from './types';
-import { WithMyTemplateElementProps } from '../../types';
+import { WithContentTemplateElementProps } from '../../content-element';
 
 export const Button = ({
   tag,
@@ -8,7 +8,7 @@ export const Button = ({
   children,
   type = 'button',
   ...props
-}: ButtonProps & WithMyTemplateElementProps) => {
+}: ButtonProps & WithContentTemplateElementProps) => {
   if (content && typeof content === 'string') {
     // TODO FAQ: How to fix ts
     // @ts-ignore
@@ -23,3 +23,5 @@ export const Button = ({
     </button>
   );
 };
+
+Button.displayName = 'CE.Button';

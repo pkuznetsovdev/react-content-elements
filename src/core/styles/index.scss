@@ -1,5 +1,2 @@
-@import'utils';
-@import'globals';
-@import'content-elements';
-@import'modifiers';
-@import'themes';
+@forward "variables";
+@forward "mixins";
