@@ -43,9 +43,6 @@ class CEClass {
     Custom = getContentElementByNameRenderer()('custom');
 }
 
-// const CE = new CEClass();
-
 export default CEClass.getInstance();
 
-export * from './utils';
 export * from './core/shared';
