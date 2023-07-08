@@ -11,7 +11,7 @@ import { WithContentElementConfig } from './with-content-element-config';
 import { validateUnreachableCode } from './utils';
 
 export const getContentElementByNameRenderer = <ElementName extends ContentElementName>(
-    customConfig: CustomConfig
+    customConfig: CustomConfig = {}
 ) => {
   const elementTemplatesByNameWithDefaultValues = {
     ...CONTENT_ELEMENTS_BY_NAME,

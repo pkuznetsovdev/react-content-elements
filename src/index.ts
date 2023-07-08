@@ -1,58 +1,51 @@
-import { getContentElementByNameRenderer } from './core';
-import {ContentElementName, CustomConfig} from "./core/content-element";
-
-const CE = (() => {
-  let customConfig: CustomConfig = {};
-
-  const setup = (customConfigBySetup: CustomConfig) => {
-    customConfig = customConfigBySetup;
-  }
-
-  const CE = {
-    Text: getContentElementByNameRenderer(customConfig)('text'),
-    Image: getContentElementByNameRenderer(customConfig)('image'),
-    Block: getContentElementByNameRenderer(customConfig)('block'),
-    List: getContentElementByNameRenderer(customConfig)('list'),
-    Link: getContentElementByNameRenderer(customConfig)('link'),
-    Divider: getContentElementByNameRenderer(customConfig)('divider'),
-    Button: getContentElementByNameRenderer(customConfig)('button'),
-    Custom: getContentElementByNameRenderer(customConfig)('custom'),
-  } as const;
-
-  return {
-    ...CE,
-    setup,
-  }
-})();
+import {getContentElementByNameRenderer} from './core';
+import {ContentElementName, ContentElementProps, CustomConfig} from "./core/content-element";
+import React from "react";
 
 class CEClass {
-  customConfig: CustomConfig = {};
-  constructor(options: CustomConfig = {}) {
-    this.customConfig = options || {};
-  }
-  static createInstance(options = {}) { return new CEClass(options) }
-  static getContentElementByName(customConfig: CustomConfig, name: ContentElementName) {
-    return getContentElementByNameRenderer(customConfig)(name)
-  }
-  setup(customConfigBySetup: CustomConfig) {
-    this.customConfig = customConfigBySetup;
-  }
+    private static instance: CEClass;
 
-  Text() { return getContentElementByNameRenderer(this.customConfig)('text')}
-  Image() { return  getContentElementByNameRenderer(this.customConfig)('image')}
-  Block() {
-    return  getContentElementByNameRenderer(this.customConfig)('block')
-  }
-  List() { return  getContentElementByNameRenderer(this.customConfig)('list')}
-  Link() { return  getContentElementByNameRenderer(this.customConfig)('link')}
-  Divider() { return  getContentElementByNameRenderer(this.customConfig)('divider')}
-  Button() { return  getContentElementByNameRenderer(this.customConfig)('button')}
-  Custom() { return  getContentElementByNameRenderer(this.customConfig)('custom')}
+    private constructor() {
+    }
+
+    static getInstance(): CEClass {
+        if (!CEClass.instance) {
+            CEClass.instance = new CEClass();
+        }
+        return CEClass.instance;
+    }
+
+    setup(customConfigBySetup: CustomConfig) {
+        this.Text = getContentElementByNameRenderer(customConfigBySetup)('text')
+        this.Image = getContentElementByNameRenderer(customConfigBySetup)('image')
+        this.Block = getContentElementByNameRenderer(customConfigBySetup)('block')
+        this.List = getContentElementByNameRenderer(customConfigBySetup)('list')
+        this.Link = getContentElementByNameRenderer(customConfigBySetup)('link')
+        this.Divider = getContentElementByNameRenderer(customConfigBySetup)('divider')
+        this.Button = getContentElementByNameRenderer(customConfigBySetup)('button')
+        this.Custom = getContentElementByNameRenderer(customConfigBySetup)('custom')
+    }
+
+    Text = getContentElementByNameRenderer()('text');
+
+    Image = getContentElementByNameRenderer()('image');
+
+    Block = getContentElementByNameRenderer()('block');
+
+    List = getContentElementByNameRenderer()('list');
+
+    Link = getContentElementByNameRenderer()('link');
+
+    Divider = getContentElementByNameRenderer()('divider');
+
+    Button = getContentElementByNameRenderer()('button');
+
+    Custom = getContentElementByNameRenderer()('custom');
 }
 
 // const CE = new CEClass();
 
-export default CE;
+export default CEClass.getInstance();
 
 export * from './utils';
 export * from './core/shared';

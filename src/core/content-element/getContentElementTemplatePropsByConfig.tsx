@@ -42,9 +42,6 @@ const TAG_BY_ELEMENT_NAME = {
 function getContentElementTag<ElementName extends ContentElementName>(config: ContentElementConfig<ElementName>, customTags?: CustomConfig['tags']) {
   const { contentElementName, tag, modifiers = [] } = config;
 
-  // @ts-ignore
-  window.a = customTags;
-
   // 1. By inline property
   if (tag) {
     return tag;
