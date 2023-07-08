@@ -28,7 +28,7 @@ type ContentElementConfigBaseProps<ElementName extends ContentElementName> = Par
   if: boolean;
 }>;
 
-interface ContentElementCofigContentMap<
+interface ContentElementConfigContentMap<
   ElementName extends ContentElementName,
   ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
 > {
@@ -49,7 +49,7 @@ interface ContentElementCofigContentMap<
 // TODO FAQ: How to fix ts
 // @ts-ignore
 type ContentElementCofigContent<ElementName extends ContentElementName> =
-  ContentElementCofigContentMap<ElementName>[ElementName];
+  ContentElementConfigContentMap<ElementName>[ElementName];
 
 export type ContentElementConfig<ElementName extends ContentElementName> = HTMLProps<any> &
   ContentElementConfigBase<ElementName> &

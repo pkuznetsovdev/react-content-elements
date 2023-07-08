@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListItemProps, ListProps } from './types';
 import type { WithContentTemplateElementProps } from '../../content-element';
-import { BASE_CLASSNAME } from '../../content-element/base-classname';
-import { SHARED_UTILS } from '../../../utils';
+import { BASE_CLASSNAME } from '../../content-element';
+import {getClassName} from "../../utils";
 
 export const List = ({
   children,
@@ -110,7 +110,7 @@ export const List = ({
 
 export const ListItem = ({ children, ...props }: ListItemProps) => {
   return (
-    <li className={SHARED_UTILS.getClassNames(BASE_CLASSNAME, `${BASE_CLASSNAME}-item`)} {...props}>
+    <li className={getClassName(BASE_CLASSNAME, `${BASE_CLASSNAME}-item`)} {...props}>
       {children}
     </li>
   );

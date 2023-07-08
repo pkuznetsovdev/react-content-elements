@@ -24,3 +24,10 @@ export type ContentElementTemplateProps<ElementName extends ContentElementName> 
 export type ContentElementSpecialProps<ElementName extends ContentElementName> = {
   contentElementName: ElementName;
 };
+export interface CustomConfig extends Partial<{
+  tags: Partial<{
+    byName: Record<ContentElementName, keyof HTMLElementTagNameMap>,
+    byModifier: Record<string, keyof HTMLElementTagNameMap>,
+  }>,
+  customElements: {},
+}> {}

@@ -1,19 +1,48 @@
-import { getContentElementByNameRenderer } from './core';
+import {getContentElementByNameRenderer} from './core';
+import {ContentElementName, ContentElementProps, CustomConfig} from "./core/content-element";
+import React from "react";
 
-const getContentElementByName = getContentElementByNameRenderer();
+class CEClass {
+    private static instance: CEClass;
 
-const CE = {
-  Text: getContentElementByName('text'),
-  Image: getContentElementByName('image'),
-  Block: getContentElementByName('block'),
-  List: getContentElementByName('list'),
-  Link: getContentElementByName('link'),
-  Divider: getContentElementByName('divider'),
-  Button: getContentElementByName('button'),
-  Custom: getContentElementByName('custom'),
-};
+    private constructor() {
+    }
 
-export * from './utils';
+    static getInstance(): CEClass {
+        if (!CEClass.instance) {
+            CEClass.instance = new CEClass();
+        }
+        return CEClass.instance;
+    }
+
+    setup(customConfigBySetup: CustomConfig) {
+        this.Text = getContentElementByNameRenderer(customConfigBySetup)('text')
+        this.Image = getContentElementByNameRenderer(customConfigBySetup)('image')
+        this.Block = getContentElementByNameRenderer(customConfigBySetup)('block')
+        this.List = getContentElementByNameRenderer(customConfigBySetup)('list')
+        this.Link = getContentElementByNameRenderer(customConfigBySetup)('link')
+        this.Divider = getContentElementByNameRenderer(customConfigBySetup)('divider')
+        this.Button = getContentElementByNameRenderer(customConfigBySetup)('button')
+        this.Custom = getContentElementByNameRenderer(customConfigBySetup)('custom')
+    }
+
+    Text = getContentElementByNameRenderer()('text');
+
+    Image = getContentElementByNameRenderer()('image');
+
+    Block = getContentElementByNameRenderer()('block');
+
+    List = getContentElementByNameRenderer()('list');
+
+    Link = getContentElementByNameRenderer()('link');
+
+    Divider = getContentElementByNameRenderer()('divider');
+
+    Button = getContentElementByNameRenderer()('button');
+
+    Custom = getContentElementByNameRenderer()('custom');
+}
+
+export default CEClass.getInstance();
+
 export * from './core/shared';
-
-export default CE;
