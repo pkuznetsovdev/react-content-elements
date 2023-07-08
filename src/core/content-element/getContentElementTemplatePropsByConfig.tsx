@@ -1,14 +1,19 @@
-import type { ContentElementName, ContentElementTemplateProps, ContentElementModifiers } from './content-elements';
+import type {
+  ContentElementName,
+  ContentElementTemplateProps,
+  ContentElementModifiers,
+  CustomConfig
+} from './content-elements';
 import type { ContentElementConfig } from './content-element-config';
 import { BASE_CLASSNAME } from './base-classname';
 
 export function getContentElementTemplatePropsByConfig<
   ElementName extends ContentElementName,
   ElementConfig extends ContentElementConfig<ElementName>,
->(config: ElementConfig) {
+>(config: ElementConfig, customConfig: CustomConfig) {
   const contentElementClassName = getContentElementClassName(config);
 
-  const contentElementTag = getContentElementTag(config);
+  const contentElementTag = getContentElementTag(config, customConfig?.tags);
 
   const { modifiers, contentElementName, ...nativeProps } = config;
 
@@ -34,27 +39,25 @@ const TAG_BY_ELEMENT_NAME = {
   link: 'a',
 } as Record<ContentElementName, string>;
 
-const TAG_BY_ELEMENT_MODIFIER = {
-  header: 'h1',
-  section: 'section',
-  title: 'h3',
-  subtitle: 'h5',
-  ol: 'ol',
-};
-
-function getContentElementTag<ElementName extends ContentElementName>(config: ContentElementConfig<ElementName>) {
+function getContentElementTag<ElementName extends ContentElementName>(config: ContentElementConfig<ElementName>, customTags?: CustomConfig['tags']) {
   const { contentElementName, tag, modifiers = [] } = config;
 
+  // @ts-ignore
+  window.a = customTags;
+
+  // 1. By inline property
   if (tag) {
     return tag;
   }
 
   let tagByModifier;
 
+  // 2. By  modifier
   for (const m of modifiers) {
-    // TODO: FAQ HOW TO FIX?
-    // @ts-ignore
-    tagByModifier = TAG_BY_ELEMENT_MODIFIER[m];
+    if (customTags?.byModifier) {
+      tagByModifier = customTags.byModifier[m];
+    }
+
     if (tagByModifier) {
       break;
     }
@@ -64,8 +67,16 @@ function getContentElementTag<ElementName extends ContentElementName>(config: Co
     return tagByModifier;
   }
 
-  // TODO: FAQ HOW TO FIX?
-  // @ts-ignore
+  // 3. Custom tag by name
+  if (customTags?.byName) {
+    const tagByName = customTags.byName[contentElementName];
+
+    if (tagByName) {
+      return tagByName;
+    }
+  }
+
+  // 4. Default tag by name
   return TAG_BY_ELEMENT_NAME[contentElementName];
 }
 

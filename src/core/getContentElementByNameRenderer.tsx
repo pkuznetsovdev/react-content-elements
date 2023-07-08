@@ -4,18 +4,18 @@ import {
   ContentElementName,
   ContentElementConfig,
   ContentElementTemplateProps,
-  ContentElementConfigDefaultMap,
+  ContentElementConfigDefaultMap, CustomConfig,
 } from './content-element';
 import { CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME, CONTENT_ELEMENTS_BY_NAME } from './content-element';
 import { WithContentElementConfig } from './with-content-element-config';
 import { validateUnreachableCode } from './utils';
 
 export const getContentElementByNameRenderer = <ElementName extends ContentElementName>(
-  elementTemplatesByName?: Record<ElementName, React.FC<ContentElementProps<ElementName>>>,
+    customConfig: CustomConfig
 ) => {
   const elementTemplatesByNameWithDefaultValues = {
     ...CONTENT_ELEMENTS_BY_NAME,
-    ...elementTemplatesByName,
+    // ...(customConfig?.customElements || {}),
   };
 
   return (contentElementName: ElementName) => {
@@ -37,9 +37,9 @@ export const getContentElementByNameRenderer = <ElementName extends ContentEleme
 
       const contentElementConfig = getConfigByValidatedProps(propsWithoutCEIf, contentElementName);
 
-      // Todo: How to fix
+      // TODO: FAQ HOW TO FIX?
       // @ts-ignore
-      return WithContentElementConfig(ContentElementTemplate)(contentElementConfig);
+      return WithContentElementConfig(ContentElementTemplate)(contentElementConfig, customConfig);
     };
   };
 };
