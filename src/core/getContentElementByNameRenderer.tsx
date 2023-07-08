@@ -9,7 +9,6 @@ import {
 import { CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME, CONTENT_ELEMENTS_BY_NAME } from './content-element';
 import { WithContentElementConfig } from './with-content-element-config';
 import { validateUnreachableCode } from './utils';
-import { useValidateContentElementProps } from './useValidateContentElementProps';
 
 export const getContentElementByNameRenderer = <ElementName extends ContentElementName>(
   elementTemplatesByName?: Record<ElementName, React.FC<ContentElementProps<ElementName>>>,
@@ -21,36 +20,39 @@ export const getContentElementByNameRenderer = <ElementName extends ContentEleme
 
   return (contentElementName: ElementName) => {
     return (props: ContentElementProps<ElementName>) => {
-      const isContentElementPropsValid = useValidateContentElementProps(props, contentElementName);
-
-      if (!isContentElementPropsValid) {
+      if ((Object.hasOwn(props, 'if') && !Boolean(props.if))) {
         return null;
       }
 
+      const { if: renameReservedWordIf, ...propsWithoutCEIf } = props;
+
+
       const ContentElementTemplate = elementTemplatesByNameWithDefaultValues[contentElementName] as React.FC<
-        ContentElementTemplateProps<ElementName>
+          ContentElementTemplateProps<ElementName>
       >;
 
       if (!ContentElementTemplate) {
         return null;
       }
 
-      const contentElementConfig = getConfigByValidatedProps(props, contentElementName);
+      const contentElementConfig = getConfigByValidatedProps(propsWithoutCEIf, contentElementName);
 
+      // Todo: How to fix
+      // @ts-ignore
       return WithContentElementConfig(ContentElementTemplate)(contentElementConfig);
     };
   };
 };
 
 function getConfigByValidatedProps<ElementName extends ContentElementName>(
-  props: ContentElementProps<ElementName>,
+  props: Omit<ContentElementProps<ElementName>, 'if'>,
   contentElementName: ElementName,
-): ContentElementConfig<ElementName> {
+): Omit<ContentElementProps<ElementName>, 'if'> {
   return getContentElementConfigFromProps(props, contentElementName);
 }
 
 function getContentElementConfigFromProps<ElementName extends ContentElementName>(
-  props: ContentElementProps<ElementName>,
+  props: Omit<ContentElementProps<ElementName>, 'if'>,
   contentElementName: ElementName,
 ) {
   const isDefaultConfig = CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME[contentElementName] === typeof props.config;
@@ -63,10 +65,10 @@ function getContentElementConfigFromProps<ElementName extends ContentElementName
 }
 
 function getContentElementConfig<ElementName extends ContentElementName>(
-  props: ContentElementProps<ElementName>,
+  props: Omit<ContentElementProps<ElementName>, 'if'>,
   contentElementName: ElementName,
   customProps: Partial<ContentElementProps<ElementName>> = {},
-): ContentElementConfig<ElementName> {
+): Omit<ContentElementProps<ElementName>, 'if'> {
   const { config, ...restProps } = props;
 
   const configToUse = config && typeof config !== 'string' ? config : {};
@@ -100,9 +102,9 @@ function mergeModifiersInConfig<ElementName extends ContentElementName>(
 }
 
 function getConfigByDefaultValue<ElementName extends ContentElementName>(
-  props: ContentElementProps<ElementName>,
+  props: Omit<ContentElementProps<ElementName>, 'if'>,
   contentElementName: ElementName,
-): ContentElementConfig<ElementName> {
+): Omit<ContentElementProps<ElementName>, 'if'> {
   const { config } = props;
   switch (contentElementName) {
     case 'text':

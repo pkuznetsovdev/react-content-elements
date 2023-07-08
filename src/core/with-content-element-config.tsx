@@ -6,7 +6,7 @@ export const WithContentElementConfig =
   <ElementName extends ContentElementName, ElementConfig extends ContentElementConfig<ElementName>>(
     ContentElementTemplate: React.FC<ContentElementTemplateProps<ElementName>>,
   ) =>
-  (contentElementConfig: ElementConfig) => {
+      (contentElementConfig: Omit<ElementConfig, 'if'>) => {
     const contentElementTemplateProps = getContentElementTemplatePropsByConfig(contentElementConfig);
     if (contentElementConfig.contentElementName === 'text' && Array.isArray(contentElementConfig.content)) {
       return (

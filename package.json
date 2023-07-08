@@ -1,6 +1,6 @@
 {
   "name": "react-content-elements",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "private": false,
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

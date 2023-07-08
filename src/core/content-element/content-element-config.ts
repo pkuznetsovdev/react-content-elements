@@ -19,11 +19,13 @@ import { CustomProps } from '../templates/custom/types';
 type ContentElementConfigBase<ElementName extends ContentElementName> = Partial<{
   tag: ContentElementTag;
   modifiers: ContentElementModifiers;
+  if: boolean;
 }>;
 
 type ContentElementConfigBaseProps<ElementName extends ContentElementName> = Partial<{
   tag: ContentElementTag;
   modifiers: ContentElementModifiers | unknown[];
+  if: boolean;
 }>;
 
 interface ContentElementCofigContentMap<

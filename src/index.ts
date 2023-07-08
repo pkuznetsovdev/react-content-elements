@@ -13,11 +13,7 @@ const CE = {
   Custom: getContentElementByName('custom'),
 };
 
-export { CE };
-
 export * from './utils';
 export * from './core/shared';
 
-export default {
-  CE,
-};
+export default CE;

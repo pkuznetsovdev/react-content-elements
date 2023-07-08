@@ -15,7 +15,7 @@ type ContentElementTemplatePropsMap = typeof CONTENT_ELEMENTS_BY_NAME;
 
 export type ContentElementName = keyof ContentElementTemplatePropsMap;
 export type ContentElementTag = keyof HTMLElementTagNameMap;
-export type ContentElementModifiers = (string | unknown)[];
+export type ContentElementModifiers = string[];
 
 export type ContentElementTemplateProps<ElementName extends ContentElementName> = Parameters<
   ContentElementTemplatePropsMap[ElementName]
