@@ -1,2 +1,4 @@
-export interface BlockProps extends React.HTMLProps<HTMLDivElement> {
+import {CEHTMLProps} from "../../types";
+
+export interface BlockProps extends CEHTMLProps<HTMLDivElement> {
 }

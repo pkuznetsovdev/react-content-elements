@@ -1,3 +1,3 @@
-import React from 'react';
+import {CEHTMLProps} from "../../types";
 
-export type LinkProps = React.HTMLProps<HTMLLinkElement>;
+export type LinkProps = CEHTMLProps<HTMLLinkElement>;

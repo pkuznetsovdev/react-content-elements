@@ -1,3 +1,5 @@
+import {CEHTMLProps} from "../types";
+
 export const CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME = {
   text: 'string',
   image: 'string',
@@ -16,21 +18,19 @@ import { ButtonProps } from '../templates/button/types';
 import { CustomProps } from '../templates/custom/types';
 
 /** START: ContentElementConfig */
-type ContentElementConfigBase<ElementName extends ContentElementName> = Partial<{
+interface ContentElementConfigBase extends Partial<{
   tag: ContentElementTag;
   modifiers: ContentElementModifiers;
   if: boolean;
-}>;
+  content?: string;
+}> {}
 
-type ContentElementConfigBaseProps<ElementName extends ContentElementName> = Partial<{
-  tag: ContentElementTag;
-  modifiers: ContentElementModifiers | unknown[];
-  if: boolean;
-}>;
+export interface ContentElementConfigBaseProps extends Omit<Partial<ContentElementConfigBase>, 'modifiers'> {
+  modifiers?: ContentElementConfigBase['modifiers'] | unknown[];
+}
 
 interface ContentElementConfigContentMap<
   ElementName extends ContentElementName,
-  ListElementTemplateProps extends Record<string, unknown> = Record<string, never>,
 > {
   text: React.PropsWithChildren<{
     text?: string | Array<string> | false | null | 0 | ContentElementConfig<ElementName>;
@@ -39,7 +39,7 @@ interface ContentElementConfigContentMap<
     src: string;
   };
   block: never;
-  list: ListProps<ListElementTemplateProps>;
+  list: ListProps;
   link: LinkProps;
   divider: never;
   button: ButtonProps;
@@ -48,19 +48,19 @@ interface ContentElementConfigContentMap<
 
 // TODO FAQ: How to fix ts
 // @ts-ignore
-type ContentElementCofigContent<ElementName extends ContentElementName> =
+type ContentElementConfigContent<ElementName extends ContentElementName> =
   ContentElementConfigContentMap<ElementName>[ElementName];
 
-export type ContentElementConfig<ElementName extends ContentElementName> = HTMLProps<any> &
-  ContentElementConfigBase<ElementName> &
-  ContentElementCofigContent<ElementName> &
+export type ContentElementConfig<ElementName extends ContentElementName> = CEHTMLProps &
+  ContentElementConfigBase &
+  ContentElementConfigContent<ElementName> &
   ContentElementSpecialProps<ElementName>;
 
 export type ContentElementConfigProps<ElementName extends ContentElementName> = Omit<
   ContentElementConfig<ElementName>,
   'contentElementName' | 'modifiers' | 'tag'
 > &
-  ContentElementConfigBaseProps<ElementName>;
+  ContentElementConfigBaseProps;
 
 export interface ContentElementConfigDefaultMap extends Partial<Record<ContentElementName, unknown>> {
   text?: string;
@@ -74,3 +74,6 @@ export interface ContentElementConfigDefaultMap extends Partial<Record<ContentEl
 }
 
 /** END: ContentElementConfig */
+
+export interface WithContentTemplateElementProps extends ContentElementConfigBaseProps {
+}

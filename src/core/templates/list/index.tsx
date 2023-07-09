@@ -1,76 +1,43 @@
 import React from 'react';
 import { ListItemProps, ListProps } from './types';
 import type { WithContentTemplateElementProps } from '../../content-element';
-import { BASE_CLASSNAME } from '../../content-element';
-import {getClassName} from "../../utils";
+import {getCEClassName, checkIfObject} from "../../utils";
 
 export const List = ({
   children,
   tag: TagName,
-  contentElementKey,
+  itemKey,
   content,
-  listItemTemplate: ItemTemplate,
+  ItemTemplate,
   ...props
-}: WithContentTemplateElementProps & ListProps) => {
-  const elementKeyByListProps = contentElementKey || 'id';
+}: Omit<WithContentTemplateElementProps, 'content'> & ListProps) => {
+  const elementKeyByListProps = itemKey || 'id';
 
-  if (content && typeof content[0] === 'string' && !ItemTemplate) {
-    return (
-      <>
-        {/* TODO FAQ: How to fix ts
-           @ts-ignore */}
-        <TagName {...props}>
-          {content.map((listItemText, idx) => {
-            // TODO FAQ: How to fix ts
-            // @ts-ignore
-            return <ListItem key={idx} dangerouslySetInnerHTML={{ __html: listItemText }} />;
-          })}
-        </TagName>
-      </>
-    );
-  }
-
-  if (content && ItemTemplate) {
+  if (content) {
     return (
       <>
         {/* TODO FAQ: How to fix ts
          @ts-ignore */}
         <TagName {...props}>
           {content.map((listItemData, idx) => {
+            {/* TODO FAQ: How to fix ts
+         @ts-ignore */}
             const elementKeyValue = listItemData.id || idx;
 
-            return (
-              <ListItem key={elementKeyValue}>
-                {/* TODO FAQ: How to fix ts
-                   @ts-ignore */}
-                <ItemTemplate {...{ ...listItemData, itemIndex: idx }} />
-              </ListItem>
-            );
-          })}
-        </TagName>
-      </>
-    );
-  }
+            let itemData = listItemData;
+            let liProps = {};
 
-  if (content && React.Children.only(children)) {
-    return (
-      <>
-        {/* TODO FAQ: How to fix ts
-           @ts-ignore */}
-
-        <TagName {...props}>
-          {content.map((listItemData, idx) => {
-            const elementKeyValue = listItemData.id || idx;
+            if (checkIfObject(listItemData)) {
+              const { liElementProps, ...restListItemData} = listItemData;
+              itemData = restListItemData;
+              liProps = liElementProps as Object || {};
+            }
 
             return (
-              <ListItem key={elementKeyValue}>
-                {/*{child}*/}
+              <ListItem key={elementKeyValue as string | number} data-item-index={idx} {...liProps}>
                 {/* TODO FAQ: How to fix ts
-                     @ts-ignore */}
-                {React.cloneElement(children, {
-                  itemIndex: idx,
-                  ...listItemData,
-                })}
+                @ts-ignore */}
+                {ItemTemplate ? <ItemTemplate {...itemData}  /> : listItemData}
               </ListItem>
             );
           })}
@@ -88,19 +55,9 @@ export const List = ({
         // @ts-ignore-next-line
         const elementKeyValue = child?.props[elementKeyByListProps] || idx;
 
-        if (!child) {
-          return null;
-        }
-
         return (
-          <ListItem key={elementKeyValue}>
-            {/*{child}*/}
-            {/* TODO FAQ: How to fix ts
-            @ts-ignore */}
-            {React.cloneElement(child, {
-              itemIndex: idx,
-              ...(content && content[idx] ? content[idx] : {}),
-            })}
+          <ListItem key={elementKeyValue} data-item-index={idx}>
+            {child}
           </ListItem>
         );
       })}
@@ -110,7 +67,7 @@ export const List = ({
 
 export const ListItem = ({ children, ...props }: ListItemProps) => {
   return (
-    <li className={getClassName(BASE_CLASSNAME, `${BASE_CLASSNAME}-item`)} {...props}>
+    <li className={getCEClassName('item')} {...props}>
       {children}
     </li>
   );

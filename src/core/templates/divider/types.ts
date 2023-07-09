@@ -1,1 +1,3 @@
-export type DividerProps = React.HTMLProps<HTMLHRElement>;
+import {CEHTMLProps} from "../../types";
+
+export type DividerProps = CEHTMLProps<HTMLHRElement>;

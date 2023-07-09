@@ -5,4 +5,3 @@ export * from './content-elements';
 export * from './content-element-config';
 export * from './content-element-props';
 export * from './getContentElementTemplatePropsByConfig';
-export * from './with-content-template-element-props';

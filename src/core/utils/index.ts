@@ -1,2 +1,4 @@
 export * from './validateUnreachableCode';
-export * from './getClassNames';
+export * from './getClassName';
+export * from './getCEClassName';
+export * from './checkIfObject';

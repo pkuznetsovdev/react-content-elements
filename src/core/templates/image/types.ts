@@ -1,3 +1,3 @@
-import React from 'react';
+import {CEHTMLProps} from "../../types";
 
-export type ImageProps = React.HTMLProps<HTMLImageElement>;
+export type ImageProps = CEHTMLProps<HTMLImageElement>;
