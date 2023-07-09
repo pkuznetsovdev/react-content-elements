@@ -37,7 +37,7 @@ export const List = ({
               <ListItem key={elementKeyValue as string | number} data-item-index={idx} {...liProps}>
                 {/* TODO FAQ: How to fix ts
                 @ts-ignore */}
-                {ItemTemplate ? <ItemTemplate {...itemData}  /> : listItemData}
+                {ItemTemplate ? <ItemTemplate {...itemData} itemIndex={idx} /> : listItemData}
               </ListItem>
             );
           })}
