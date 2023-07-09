@@ -1,4 +1,4 @@
 export const STRING_LITERALS = {
-    space: ' ',
-    srcSetDivider: ', ',
+  space: " ",
+  srcSetDivider: ", ",
 };

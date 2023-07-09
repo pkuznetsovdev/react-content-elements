@@ -1,3 +1,6 @@
 import React from "react";
 
-export interface CEHTMLProps<HTMLElementType = any> extends Omit<React.HTMLProps<HTMLElementType>, 'content'> {}
+export type CEHTMLProps<HTMLElementType = unknown> = Omit<
+  React.HTMLProps<HTMLElementType>,
+  "content"
+>;

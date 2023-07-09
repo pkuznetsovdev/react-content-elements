@@ -1,1 +1,1 @@
-export * from './getContentElementByNameRenderer';
+export * from "./getContentElementByNameRenderer";

@@ -1,4 +1,3 @@
-import {CEHTMLProps} from "../../types";
+import { CEHTMLProps } from "../../types";
 
-export interface BlockProps extends CEHTMLProps<HTMLDivElement> {
-}
+export type BlockProps = CEHTMLProps<HTMLDivElement>;

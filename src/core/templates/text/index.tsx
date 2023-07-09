@@ -1,9 +1,14 @@
-import React from 'react';
-import { TextProps } from './types';
-import { WithContentTemplateElementProps } from '../../content-element';
+import React from "react";
+import { TextProps } from "./types";
+import { WithContentTemplateElementProps } from "../../content-element";
 
-export const Text = ({ children, tag: TagName, content, ...props }: TextProps & WithContentTemplateElementProps) => {
-  if (content && typeof content === 'string') {
+export const Text = ({
+  children,
+  tag: TagName,
+  content,
+  ...props
+}: TextProps & WithContentTemplateElementProps) => {
+  if (content && typeof content === "string") {
     return (
       // TODO: FIX TS className type
       // @ts-ignore-next-line
@@ -18,4 +23,4 @@ export const Text = ({ children, tag: TagName, content, ...props }: TextProps & 
   );
 };
 
-Text.displayName = 'CE.Text';
+Text.displayName = "CE.Text";

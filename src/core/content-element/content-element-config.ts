@@ -1,39 +1,46 @@
-import {CEHTMLProps} from "../types";
+import { CEHTMLProps } from "../types";
 
 export const CONTENT_ELEMENT_CONFIG_DEFAULT_VALUE_BY_NAME = {
-  text: 'string',
-  image: 'string',
-  link: 'string',
+  text: "string",
+  image: "string",
+  link: "string",
 } as Record<ContentElementName, unknown>;
 import {
   ContentElementModifiers,
   ContentElementName,
   ContentElementSpecialProps,
   ContentElementTag,
-} from './content-elements';
-import React, { HTMLProps } from 'react';
-import { ListProps } from '../templates/list/types';
-import { LinkProps } from '../templates/link/types';
-import { ButtonProps } from '../templates/button/types';
-import { CustomProps } from '../templates/custom/types';
+} from "./content-elements";
+import React from "react";
+import { ListProps } from "../templates/list/types";
+import { LinkProps } from "../templates/link/types";
+import { ButtonProps } from "../templates/button/types";
+import { CustomProps } from "../templates/custom/types";
 
 /** START: ContentElementConfig */
-interface ContentElementConfigBase extends Partial<{
+type ContentElementConfigBase = Partial<{
   tag: ContentElementTag;
   modifiers: ContentElementModifiers;
   if: boolean;
   content?: string;
-}> {}
+}>;
 
-export interface ContentElementConfigBaseProps extends Omit<Partial<ContentElementConfigBase>, 'modifiers'> {
-  modifiers?: ContentElementConfigBase['modifiers'] | unknown[];
+export interface ContentElementConfigBaseProps
+  extends Omit<Partial<ContentElementConfigBase>, "modifiers"> {
+  modifiers?: ContentElementConfigBase["modifiers"] | unknown[];
 }
 
 interface ContentElementConfigContentMap<
   ElementName extends ContentElementName,
 > {
   text: React.PropsWithChildren<{
-    text?: string | Array<string> | false | null | 0 | ContentElementConfig<ElementName>;
+    text?:
+      | string
+      | Array<string>
+      | false
+      | null
+      | 0
+      | ContentElementConfig<ElementName>;
   }>;
   image: {
     src: string;
@@ -51,18 +58,21 @@ interface ContentElementConfigContentMap<
 type ContentElementConfigContent<ElementName extends ContentElementName> =
   ContentElementConfigContentMap<ElementName>[ElementName];
 
-export type ContentElementConfig<ElementName extends ContentElementName> = CEHTMLProps &
-  ContentElementConfigBase &
-  ContentElementConfigContent<ElementName> &
-  ContentElementSpecialProps<ElementName>;
+export type ContentElementConfig<ElementName extends ContentElementName> =
+  CEHTMLProps &
+    ContentElementConfigBase &
+    ContentElementConfigContent<ElementName> &
+    ContentElementSpecialProps<ElementName>;
 
-export type ContentElementConfigProps<ElementName extends ContentElementName> = Omit<
-  ContentElementConfig<ElementName>,
-  'contentElementName' | 'modifiers' | 'tag'
-> &
-  ContentElementConfigBaseProps;
+export type ContentElementConfigProps<ElementName extends ContentElementName> =
+  Omit<
+    ContentElementConfig<ElementName>,
+    "contentElementName" | "modifiers" | "tag"
+  > &
+    ContentElementConfigBaseProps;
 
-export interface ContentElementConfigDefaultMap extends Partial<Record<ContentElementName, unknown>> {
+export interface ContentElementConfigDefaultMap
+  extends Partial<Record<ContentElementName, unknown>> {
   text?: string;
   image?: string;
   block?: never;
@@ -75,5 +85,4 @@ export interface ContentElementConfigDefaultMap extends Partial<Record<ContentEl
 
 /** END: ContentElementConfig */
 
-export interface WithContentTemplateElementProps extends ContentElementConfigBaseProps {
-}
+export type WithContentTemplateElementProps = ContentElementConfigBaseProps;
