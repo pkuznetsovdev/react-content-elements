@@ -11,27 +11,3 @@
     }
   }
 }
-
-@mixin childByName($ce-name: '') {
-  @if ($ce-name == '') {
-    & > #{$ce-base-name} {
-      @content;
-    }
-  } @else {
-    & > #{$ce-base-name}-#{$ce-name} {
-      @content;
-    }
-  }
-}
-
-@mixin childByName($ce-name: '') {
-  @if ($ce-name == '') {
-    & > #{$ce-base-name} {
-      @content;
-    }
-  } @else {
-    & > #{$ce-base-name}-#{$ce-name} {
-      @content;
-    }
-  }
-}

@@ -9,6 +9,8 @@ import { WithContentElementConfig } from "./with-content-element-config";
 // import { validateUnreachableCode } from "./utils";
 import { ContentElementProps1 } from "./types";
 
+type CustomProps = Record<string, unknown>;
+
 export const getContentElementByNameRenderer = <
   ElementName extends ContentElementName,
 >(
@@ -20,7 +22,7 @@ export const getContentElementByNameRenderer = <
   };
 
   return (contentElementName: ElementName) => {
-    return (props: ContentElementProps1<ElementName>) => {
+    return (props: ContentElementProps1<ElementName> & CustomProps) => {
       if (Object.hasOwn(props, "if") && !props.if) {
         return null;
       }

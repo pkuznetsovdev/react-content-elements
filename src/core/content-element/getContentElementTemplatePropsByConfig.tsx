@@ -89,6 +89,8 @@ function getContentElementClassName<ElementName extends ContentElementName>(
   config: ContentElementConfig<ElementName>,
 ) {
   const { modifiers, className } = config;
+  const isCustomElement = config.contentElementName === "custom";
+
   const classNameByContentName = `${BASE_CLASSNAME}-${config.contentElementName}`;
   // TODO: FAQ HOW TO FIX?
   // @ts-ignore
@@ -104,8 +106,8 @@ function getContentElementClassName<ElementName extends ContentElementName>(
 
   return [
     className,
-    BASE_CLASSNAME,
-    classNameByContentName,
+    isCustomElement ? "" : BASE_CLASSNAME,
+    isCustomElement ? "" : classNameByContentName,
     classNameByCustomName,
     ...classNameByModifiers,
   ]

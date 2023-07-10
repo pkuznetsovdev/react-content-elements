@@ -19,7 +19,7 @@ export interface ContentByElementName {
   list: (string | Record<string, unknown>)[];
 }
 
-interface ContentElementTemplateProps1 {
+export interface ContentElementTemplateProps1 {
   text: CEHTMLProps1<"p">;
   link: CEHTMLProps1<"a">;
   divider: CEHTMLProps1<"hr">;

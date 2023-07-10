@@ -4,7 +4,7 @@
   "private": false,
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "homepage": "https://pkuznetsov.github.io/rce",
+  "homepage": "https://pkuznetsovdev.github.io/rce",
   "author": {
     "name": "Pavel Kuznetsov",
     "email": "kuznetsov.pavel@protonmail.com",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pkuznetsovdev/rce.git"
+    "url": "git+https://github.com/pkuznetsovdev/react-content-elements.git"
   },
   "scripts": {
     "build": "webpack",
