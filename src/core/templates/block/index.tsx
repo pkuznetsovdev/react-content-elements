@@ -1,29 +1,19 @@
-import React from 'react';
-import { BlockProps } from './types';
-import { WithContentTemplateElementProps } from '../../content-element';
-import { useImageSrcBySrcSet } from '../../hooks';
+import React from "react";
+import { BlockProps } from "./types";
+import { WithContentTemplateElementProps } from "../../content-element";
 
 export const Block = ({
   children,
   tag: TagName,
-  bgSrcSet,
-  bgSrc,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   content,
   ...props
 }: BlockProps & WithContentTemplateElementProps) => {
-  const backgroundImage = useImageSrcBySrcSet(bgSrcSet, { src: bgSrc, isBg: true });
-
-  const style = {
-    ...(backgroundImage ? { backgroundImage } : {}),
-  };
-
   return (
     // TODO: FIX TS contentElementTag type
     // @ts-ignore-next-line
-    <TagName {...props} style={{ ...(props.style ? props.style : {}), ...style }}>
-      {children}
-    </TagName>
+    <TagName {...props}>{children}</TagName>
   );
 };
 
-Block.displayName = 'CE.Block';
+Block.displayName = "CE.Block";

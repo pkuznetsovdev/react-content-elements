@@ -1,1 +1,2 @@
-export * from './image';
+export * from "./CEHTMLProps";
+export * from "./refactor-types";

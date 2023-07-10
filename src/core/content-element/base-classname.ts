@@ -1,1 +1,1 @@
-export const BASE_CLASSNAME = 'ce'; // 'content-element';
+export const BASE_CLASSNAME = "ce"; // 'content-element';

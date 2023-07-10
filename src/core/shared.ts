@@ -1,3 +1,2 @@
-export * from './content-element';
-export * from './constants';
-export * from './utils';
+export * from "./content-element";
+export { getCEClassName } from "./utils";

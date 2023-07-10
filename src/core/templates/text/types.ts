@@ -1,1 +1,3 @@
-export type TextProps = React.HTMLProps<HTMLParagraphElement>;
+import { CEHTMLProps } from "../../types";
+
+export type TextProps = CEHTMLProps<HTMLParagraphElement>;

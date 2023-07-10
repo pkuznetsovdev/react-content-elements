@@ -1,1 +1,3 @@
-export type ButtonProps = React.HTMLProps<HTMLButtonElement>;
+import { CEHTMLProps } from "../../types";
+
+export type ButtonProps = CEHTMLProps<HTMLButtonElement>;
